@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E43F665212B1C0E00E1C450 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E43F664212B1C0E00E1C450 /* Alamofire.framework */; };
+		3301A0AEFD85FF9978E93513 /* Pods_CarteleraEventos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 557CA525B857861E271DB008 /* Pods_CarteleraEventos.framework */; };
+		55004D6F2059FDA60087BF70 /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55004D6E2059FDA60087BF70 /* DetalleViewController.swift */; };
+		5525AAC420584882001E3E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525AAC320584882001E3E1C /* AppDelegate.swift */; };
+		5525AAC620584882001E3E1C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525AAC520584882001E3E1C /* FirstViewController.swift */; };
+		5525AACB20584882001E3E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5525AAC920584882001E3E1C /* Main.storyboard */; };
+		5525AACD20584883001E3E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5525AACC20584883001E3E1C /* Assets.xcassets */; };
+		5525AAD020584883001E3E1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5525AACE20584883001E3E1C /* LaunchScreen.storyboard */; };
+		5525AADA20584C16001E3E1C /* Evento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525AAD920584C16001E3E1C /* Evento.swift */; };
+		5525AADC20585590001E3E1C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525AADB20585590001E3E1C /* CustomTableViewCell.swift */; };
+		556118A0207ACB52001AC6CE /* GoogleAPIClientForREST.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 556118A1207ACB52001AC6CE /* GoogleAPIClientForREST.framework */; };
+		5564A80F205DC7F3005480E7 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5564A80E205DC7F3005480E7 /* APIManager.swift */; };
+		55AB6EAD20780CCD00DB4199 /* eventosFavoritos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55AB6EAB20780CCD00DB4199 /* eventosFavoritos.xcdatamodeld */; };
+		55AB6EE02078309100DB4199 /* FavDetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB6EDF2078309100DB4199 /* FavDetalleViewController.swift */; };
+		641E53B32178270C0003A22D /* EventosFavoritos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E53B12178270B0003A22D /* EventosFavoritos+CoreDataClass.swift */; };
+		641E53B42178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E53B22178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift */; };
+		641E53B621784A410003A22D /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E53B521784A410003A22D /* MapaViewController.swift */; };
+		7A731368209229F9004B867D /* EventoFavoritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A731367209229F9004B867D /* EventoFavoritoViewController.swift */; };
+		7A73136A20A25597004B867D /* ViewControllerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73136920A25597004B867D /* ViewControllerInfo.swift */; };
+		A20224F221727165005AE674 /* MenuPrincipalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20224F121727165005AE674 /* MenuPrincipalViewController.swift */; };
+		A20224F92172F726005AE674 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20224F82172F726005AE674 /* Tags.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5564A82D205DC8F2005480E7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0E43F664212B1C0E00E1C450 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55004D6E2059FDA60087BF70 /* DetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
+		5525AAC020584882001E3E1C /* CarteleraEventos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarteleraEventos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5525AAC320584882001E3E1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5525AAC520584882001E3E1C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		5525AACA20584882001E3E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5525AACC20584883001E3E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5525AACF20584883001E3E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5525AAD120584883001E3E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5525AAD920584C16001E3E1C /* Evento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evento.swift; sourceTree = "<group>"; };
+		5525AADB20585590001E3E1C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		556118A1207ACB52001AC6CE /* GoogleAPIClientForREST.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleAPIClientForREST.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5564A80E205DC7F3005480E7 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		5564A810205DC8E3005480E7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = /Users/anamarcelav/Documents/ITESM/CarteleraEventosTec/Alamofire/Alamofire.xcodeproj; sourceTree = "<absolute>"; };
+		5564A845205DE64D005480E7 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		557CA525B857861E271DB008 /* Pods_CarteleraEventos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarteleraEventos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55AB6EAC20780CCD00DB4199 /* eventosFavoritos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eventosFavoritos.xcdatamodel; sourceTree = "<group>"; };
+		55AB6EDF2078309100DB4199 /* FavDetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavDetalleViewController.swift; sourceTree = "<group>"; };
+		641E53B12178270B0003A22D /* EventosFavoritos+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EventosFavoritos+CoreDataClass.swift"; path = "/Users/bandala/Documents/ITESM/Septimo Semestre/Dispositivos iOS/Proyecto Final/CarteleraEventos/CarteleraEventos/EventosFavoritos+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		641E53B22178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EventosFavoritos+CoreDataProperties.swift"; path = "/Users/bandala/Documents/ITESM/Septimo Semestre/Dispositivos iOS/Proyecto Final/CarteleraEventos/CarteleraEventos/EventosFavoritos+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		641E53B521784A410003A22D /* MapaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
+		7A731367209229F9004B867D /* EventoFavoritoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventoFavoritoViewController.swift; sourceTree = "<group>"; };
+		7A73136920A25597004B867D /* ViewControllerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInfo.swift; sourceTree = "<group>"; };
+		A20224F121727165005AE674 /* MenuPrincipalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPrincipalViewController.swift; sourceTree = "<group>"; };
+		A20224F82172F726005AE674 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		C5BA5A66F4958C648EC5F6EA /* Pods-CarteleraEventos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarteleraEventos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos.debug.xcconfig"; sourceTree = "<group>"; };
+		CF902FEF8F66FA10698D89E8 /* Pods-CarteleraEventos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarteleraEventos.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5525AABD20584882001E3E1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E43F665212B1C0E00E1C450 /* Alamofire.framework in Frameworks */,
+				556118A0207ACB52001AC6CE /* GoogleAPIClientForREST.framework in Frameworks */,
+				3301A0AEFD85FF9978E93513 /* Pods_CarteleraEventos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5525AAB720584882001E3E1C = {
+			isa = PBXGroup;
+			children = (
+				7A73136920A25597004B867D /* ViewControllerInfo.swift */,
+				5525AAC220584882001E3E1C /* CarteleraEventos */,
+				5525AAC120584882001E3E1C /* Products */,
+				5564A810205DC8E3005480E7 /* Alamofire.xcodeproj */,
+				92A25A0F71647E037AFF7DD3 /* Pods */,
+				E8A5588255E51023D628B0BF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5525AAC120584882001E3E1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5525AAC020584882001E3E1C /* CarteleraEventos.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5525AAC220584882001E3E1C /* CarteleraEventos */ = {
+			isa = PBXGroup;
+			children = (
+				A20224F72172CD55005AE674 /* View */,
+				A20224F62172CD4C005AE674 /* Controller */,
+				A20224F52172CC2A005AE674 /* Store */,
+				A20224F42172C17B005AE674 /* Model */,
+				5525AAC320584882001E3E1C /* AppDelegate.swift */,
+				5525AAC920584882001E3E1C /* Main.storyboard */,
+				55AB6EDF2078309100DB4199 /* FavDetalleViewController.swift */,
+				5525AADB20585590001E3E1C /* CustomTableViewCell.swift */,
+				7A731367209229F9004B867D /* EventoFavoritoViewController.swift */,
+				641E53B12178270B0003A22D /* EventosFavoritos+CoreDataClass.swift */,
+				641E53B22178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift */,
+				5525AACC20584883001E3E1C /* Assets.xcassets */,
+				5525AACE20584883001E3E1C /* LaunchScreen.storyboard */,
+				5525AAD120584883001E3E1C /* Info.plist */,
+				55AB6EAB20780CCD00DB4199 /* eventosFavoritos.xcdatamodeld */,
+				A20224F121727165005AE674 /* MenuPrincipalViewController.swift */,
+			);
+			path = CarteleraEventos;
+			sourceTree = "<group>";
+		};
+		92A25A0F71647E037AFF7DD3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C5BA5A66F4958C648EC5F6EA /* Pods-CarteleraEventos.debug.xcconfig */,
+				CF902FEF8F66FA10698D89E8 /* Pods-CarteleraEventos.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A20224F42172C17B005AE674 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5525AAD920584C16001E3E1C /* Evento.swift */,
+				A20224F82172F726005AE674 /* Tags.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A20224F52172CC2A005AE674 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		A20224F62172CD4C005AE674 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				641E53B521784A410003A22D /* MapaViewController.swift */,
+				5564A80E205DC7F3005480E7 /* APIManager.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A20224F72172CD55005AE674 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55004D6E2059FDA60087BF70 /* DetalleViewController.swift */,
+				5525AAC520584882001E3E1C /* FirstViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E8A5588255E51023D628B0BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E43F664212B1C0E00E1C450 /* Alamofire.framework */,
+				556118A1207ACB52001AC6CE /* GoogleAPIClientForREST.framework */,
+				5564A845205DE64D005480E7 /* FBSDKShareKit.framework */,
+				557CA525B857861E271DB008 /* Pods_CarteleraEventos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5525AABF20584882001E3E1C /* CarteleraEventos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5525AAD420584883001E3E1C /* Build configuration list for PBXNativeTarget "CarteleraEventos" */;
+			buildPhases = (
+				85C05ACC1121B95D8E8A233F /* [CP] Check Pods Manifest.lock */,
+				5525AABC20584882001E3E1C /* Sources */,
+				5525AABD20584882001E3E1C /* Frameworks */,
+				5525AABE20584882001E3E1C /* Resources */,
+				5564A82D205DC8F2005480E7 /* Embed Frameworks */,
+				D500B593D19DA0493E7C5CFF /* [CP] Embed Pods Frameworks */,
+				A53B02101DBC9C77DDF26E19 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CarteleraEventos;
+			productName = CarteleraEventos;
+			productReference = 5525AAC020584882001E3E1C /* CarteleraEventos.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5525AAB820584882001E3E1C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = ESCAMA;
+				TargetAttributes = {
+					5525AABF20584882001E3E1C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9XJ54N8CBD;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5525AABB20584882001E3E1C /* Build configuration list for PBXProject "CarteleraEventos" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5525AAB720584882001E3E1C;
+			productRefGroup = 5525AAC120584882001E3E1C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5525AABF20584882001E3E1C /* CarteleraEventos */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5525AABE20584882001E3E1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5525AAD020584883001E3E1C /* LaunchScreen.storyboard in Resources */,
+				5525AACD20584883001E3E1C /* Assets.xcassets in Resources */,
+				5525AACB20584882001E3E1C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		85C05ACC1121B95D8E8A233F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CarteleraEventos-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A53B02101DBC9C77DDF26E19 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D500B593D19DA0493E7C5CFF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5525AABC20584882001E3E1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				641E53B42178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift in Sources */,
+				55004D6F2059FDA60087BF70 /* DetalleViewController.swift in Sources */,
+				5525AADA20584C16001E3E1C /* Evento.swift in Sources */,
+				A20224F92172F726005AE674 /* Tags.swift in Sources */,
+				5525AADC20585590001E3E1C /* CustomTableViewCell.swift in Sources */,
+				A20224F221727165005AE674 /* MenuPrincipalViewController.swift in Sources */,
+				7A731368209229F9004B867D /* EventoFavoritoViewController.swift in Sources */,
+				641E53B621784A410003A22D /* MapaViewController.swift in Sources */,
+				55AB6EE02078309100DB4199 /* FavDetalleViewController.swift in Sources */,
+				5525AAC420584882001E3E1C /* AppDelegate.swift in Sources */,
+				5525AAC620584882001E3E1C /* FirstViewController.swift in Sources */,
+				55AB6EAD20780CCD00DB4199 /* eventosFavoritos.xcdatamodeld in Sources */,
+				7A73136A20A25597004B867D /* ViewControllerInfo.swift in Sources */,
+				641E53B32178270C0003A22D /* EventosFavoritos+CoreDataClass.swift in Sources */,
+				5564A80F205DC7F3005480E7 /* APIManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5525AAC920584882001E3E1C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5525AACA20584882001E3E1C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5525AACE20584883001E3E1C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5525AACF20584883001E3E1C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5525AAD220584883001E3E1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		5525AAD320584883001E3E1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5525AAD520584883001E3E1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5BA5A66F4958C648EC5F6EA /* Pods-CarteleraEventos.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9XJ54N8CBD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = CarteleraEventos/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosECMA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		5525AAD620584883001E3E1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF902FEF8F66FA10698D89E8 /* Pods-CarteleraEventos.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9XJ54N8CBD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = CarteleraEventos/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosECMA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5525AABB20584882001E3E1C /* Build configuration list for PBXProject "CarteleraEventos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5525AAD220584883001E3E1C /* Debug */,
+				5525AAD320584883001E3E1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5525AAD420584883001E3E1C /* Build configuration list for PBXNativeTarget "CarteleraEventos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5525AAD520584883001E3E1C /* Debug */,
+				5525AAD620584883001E3E1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		55AB6EAB20780CCD00DB4199 /* eventosFavoritos.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				55AB6EAC20780CCD00DB4199 /* eventosFavoritos.xcdatamodel */,
+			);
+			currentVersion = 55AB6EAC20780CCD00DB4199 /* eventosFavoritos.xcdatamodel */;
+			path = eventosFavoritos.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5525AAB820584882001E3E1C /* Project object */;
+}
