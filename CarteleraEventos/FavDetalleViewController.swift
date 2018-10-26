@@ -98,6 +98,7 @@ class FavDetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUI
         titlesView.layer.layoutSublayers()
         
         btCalendarioView.layer.layoutSublayers()
+        
     }
     
     /*

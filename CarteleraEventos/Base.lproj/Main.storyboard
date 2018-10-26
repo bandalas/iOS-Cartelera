@@ -305,7 +305,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpP-XH-w3S">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1259"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c1u-WF-x7w">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1u-WF-x7w">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="402"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMy-52-7hh">
@@ -456,6 +456,7 @@
                                         <constraints>
                                             <constraint firstItem="c1u-WF-x7w" firstAttribute="leading" secondItem="hpP-XH-w3S" secondAttribute="leading" id="JFR-Um-Tlw"/>
                                             <constraint firstAttribute="height" constant="1259" id="KDn-nR-ONP"/>
+                                            <constraint firstAttribute="bottom" secondItem="c1u-WF-x7w" secondAttribute="bottom" constant="857" id="NWu-5L-ytS"/>
                                             <constraint firstItem="c1u-WF-x7w" firstAttribute="top" secondItem="hpP-XH-w3S" secondAttribute="top" id="ZOD-IL-vPJ"/>
                                             <constraint firstAttribute="trailing" secondItem="c1u-WF-x7w" secondAttribute="trailing" id="ygn-4I-j3d"/>
                                         </constraints>

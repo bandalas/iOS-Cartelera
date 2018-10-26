@@ -151,8 +151,14 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         foto.clipsToBounds = true
         titlesView.createGradientLayer()
         titlesView.layer.layoutSublayers()
-        
         foto.centerXAnchor.constraint(equalTo: mainView.centerXAnchor).isActive = true
+        
+        // Bringing main elements to front otherwise they render in the back
+        titlesView.bringSubview(toFront: card)
+        lbName.layer.zPosition = 2
+        foto.layer.zPosition = 2
+        lbName.sizeToFit()
+        
         
     }
 
