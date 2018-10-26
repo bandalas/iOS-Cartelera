@@ -157,7 +157,7 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         titlesView.bringSubview(toFront: card)
         lbName.layer.zPosition = 2
         foto.layer.zPosition = 2
-        lbName.sizeToFit()
+        
         
         
     }
