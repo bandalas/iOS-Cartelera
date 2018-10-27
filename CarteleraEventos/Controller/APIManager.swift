@@ -19,14 +19,14 @@ class APIManager
 {
     
     static let sharedInstance = APIManager()
-    let jsonUrlString = "https://cartelera-api.herokuapp.com/events/"
-    var tagsMap = [String: [Evento]]()
     
-    func getEventos(completion: @escaping ([Evento]) -> Void) {
+    var categoriesMap = [String: [Evento]]()
+    
+    func getEventos(completion: @escaping ([Evento]) -> Void)
+    {
         var arrEventos = [Evento]()
         
-        
-        Alamofire.request(jsonUrlString).validate().responseJSON
+        Alamofire.request(getEventsURLRequest()).responseJSON
         {
             (response) in if let arrEveJson = response.value as? [[String : Any]]
             {
@@ -68,31 +68,53 @@ class APIManager
         }
     }
     
-    func getTags() -> [Tags]
+    /*
+        Function that gets all the categories that are registered and stores them in a dictionary for
+        further use
+     */
+    func getTags(completion: @escaping ([Category]) -> Void)
     {
-        print(self.tagsMap)
-        var allRegisteredTags = [Tags]()
-        let isMapEmpty = tagsMap.count == 0 ? true : false
-        if !isMapEmpty {
-            for (tagName, eventsWithTag) in tagsMap {
-                let auxiliarTag = Tags(nombre: tagName, todosEventos: eventsWithTag)
-                allRegisteredTags.append(auxiliarTag)
-            }
+        
+        var allCategories = [Category]()
+        Alamofire.request(getCategoriesURLRequest()).responseJSON
+            {
+                (response) in if let arrCategoriesJson = response.value as? [[String : Any]]
+                {
+                    print(arrCategoriesJson)
+                    for category in arrCategoriesJson
+                    {
+                        let currentCategory = Category(nombre: (category["name"] as! String), todosEventos: [Evento]())
+                        self.categoriesMap[currentCategory.nombre] = currentCategory.todosEventos
+                        allCategories.append(currentCategory)
+                    }
+                    completion(allCategories)
+                }
         }
-        return allRegisteredTags
+        completion(allCategories)
     }
     
-    func addTagToMap(tagName: String, event: Evento) {
-        if var mapping = self.tagsMap[tagName]
-        {
-            mapping.append(event)
-            self.tagsMap.updateValue(mapping, forKey: tagName)
-        }
-        else
-        {
-            var tempArray = [Evento]()
-            tempArray.append(event)
-            self.tagsMap[tagName] = tempArray
-        }
+    func addTagToMap(tagName: String, event: Evento)
+    {
+       
+    }
+    
+    func getEventsURLRequest()->URLRequest
+    {
+        let eventsURL = URLRequest(url: URL(string: API.EVENTS_URL)!)
+        return addKeyValuesToURLRequest(request: eventsURL)
+    }
+    
+    func getCategoriesURLRequest()->URLRequest
+    {
+        let categoriesURL = URLRequest(url: URL(string: API.CATEGORIES_URL)!)
+        return addKeyValuesToURLRequest(request: categoriesURL)
+    }
+    
+    func addKeyValuesToURLRequest(request : URLRequest)->URLRequest
+    {
+        var req = request
+        req.setValue(API.ACCEPT_KEY_VALUE, forHTTPHeaderField: API.ACCEPT_KEY)
+        req.setValue(API.AUTHORIZATION_KEY_VALUE, forHTTPHeaderField: API.AUTHORIZATION_KEY)
+        return req
     }
 }

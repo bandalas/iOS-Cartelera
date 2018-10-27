@@ -11,7 +11,7 @@ import CoreData
 
 struct GlobalVar {
     static var arrEventsGlobal = [Evento]()
-    static var arrTagsGlobal = [Tags]()
+    static var arrTagsGlobal = [Category]()
 }
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito {
@@ -86,7 +86,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var arrEventos = [Evento]()
     var arrIndFav = [Int]()
     var indSelected = 0
-    var arrTags = [Tags]()
+    var arrTags = [Category]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,9 +100,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.arrEventos = GlobalVar.arrEventsGlobal
         
-        arrTags = API.getTags()
+        
         GlobalVar.arrTagsGlobal = arrTags
-        print(API.tagsMap.count)
+        
         
         // Agrega el estatus de favorito a los eventos
         buscaFavoritos()
