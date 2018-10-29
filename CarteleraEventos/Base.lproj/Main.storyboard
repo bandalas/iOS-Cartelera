@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="167" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rva-Pl-gON">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="542"/>
                                 <color key="backgroundColor" red="0.69768053760000004" green="0.040180985629999999" blue="0.0076684850799999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellTitle" rowHeight="100" id="mGO-1D-TAk" customClass="CustomTableViewCell" customModule="CarteleraEventos" customModuleProvider="target">
@@ -108,28 +108,33 @@
                                     <segue destination="az9-sh-B5L" kind="presentation" identifier="info" id="sKF-gY-DVi"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KgN-Qw-cXA">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Rva-Pl-gON" secondAttribute="trailing" id="2h5-eF-OMi"/>
+                            <constraint firstAttribute="trailing" secondItem="Rva-Pl-gON" secondAttribute="trailing" id="2dj-6E-Iib"/>
+                            <constraint firstItem="Rva-Pl-gON" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="8x2-l4-Vmw"/>
                             <constraint firstItem="2SE-Hn-SdK" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="AJy-pS-UXc"/>
-                            <constraint firstItem="Rva-Pl-gON" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="AsV-Xr-DTR"/>
-                            <constraint firstAttribute="trailing" secondItem="Rva-Pl-gON" secondAttribute="trailing" id="KDA-KX-798"/>
-                            <constraint firstItem="Rva-Pl-gON" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="T3b-Zi-KFM"/>
-                            <constraint firstItem="Rva-Pl-gON" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Tr3-yV-ZKD"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Rva-Pl-gON" secondAttribute="bottom" id="acN-b3-1JA"/>
-                            <constraint firstItem="2SE-Hn-SdK" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="22" id="g79-Sv-7op"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Rva-Pl-gON" secondAttribute="bottom" id="vFr-KC-OQk"/>
+                            <constraint firstItem="Rva-Pl-gON" firstAttribute="top" secondItem="KgN-Qw-cXA" secondAttribute="bottom" id="KNY-AH-5pN"/>
+                            <constraint firstItem="2SE-Hn-SdK" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="22" id="Rf8-wv-dr4"/>
+                            <constraint firstItem="KgN-Qw-cXA" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="oad-Cf-aiX"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Rva-Pl-gON" secondAttribute="bottom" id="sFt-EE-iR1"/>
+                            <constraint firstItem="KgN-Qw-cXA" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="xOx-EH-vm7"/>
+                            <constraint firstAttribute="trailing" secondItem="KgN-Qw-cXA" secondAttribute="trailing" id="yDU-LJ-7MC"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Eventos" image="event-tabbar" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="eventosTableView" destination="Rva-Pl-gON" id="r9C-NB-BMf"/>
+                        <outlet property="searchBar" destination="KgN-Qw-cXA" id="efk-mz-iJM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770.625" y="-317.95774647887322"/>
+            <point key="canvasLocation" x="770.39999999999998" y="-317.99100449775113"/>
         </scene>
         <!--View Controller Info-->
         <scene sceneID="lnp-Jb-yPE">

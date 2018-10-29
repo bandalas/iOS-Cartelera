@@ -72,25 +72,23 @@ class APIManager
         Function that gets all the categories that are registered and stores them in a dictionary for
         further use
      */
-    func getTags(completion: @escaping ([Category]) -> Void)
+    func getCategories(completion: @escaping ([Category]) -> Void)
     {
         
         var allCategories = [Category]()
         Alamofire.request(getCategoriesURLRequest()).responseJSON
+        {
+            (response) in if let arrCategoriesJson = response.value as? [[String : Any]]
             {
-                (response) in if let arrCategoriesJson = response.value as? [[String : Any]]
+                for category in arrCategoriesJson
                 {
-                    print(arrCategoriesJson)
-                    for category in arrCategoriesJson
-                    {
-                        let currentCategory = Category(nombre: (category["name"] as! String), todosEventos: [Evento]())
-                        self.categoriesMap[currentCategory.nombre] = currentCategory.todosEventos
-                        allCategories.append(currentCategory)
-                    }
-                    completion(allCategories)
+                    let currentCategory = Category(nombre: (category["name"] as! String), todosEventos: [Evento]())
+                    self.categoriesMap[currentCategory.nombre] = currentCategory.todosEventos
+                    allCategories.append(currentCategory)
                 }
+                completion(allCategories)
+            }
         }
-        completion(allCategories)
     }
     
     func addTagToMap(tagName: String, event: Evento)
@@ -98,19 +96,19 @@ class APIManager
        
     }
     
-    func getEventsURLRequest()->URLRequest
+    private func getEventsURLRequest()->URLRequest
     {
         let eventsURL = URLRequest(url: URL(string: API.EVENTS_URL)!)
         return addKeyValuesToURLRequest(request: eventsURL)
     }
     
-    func getCategoriesURLRequest()->URLRequest
+    private func getCategoriesURLRequest()->URLRequest
     {
         let categoriesURL = URLRequest(url: URL(string: API.CATEGORIES_URL)!)
         return addKeyValuesToURLRequest(request: categoriesURL)
     }
     
-    func addKeyValuesToURLRequest(request : URLRequest)->URLRequest
+    private func addKeyValuesToURLRequest(request : URLRequest)->URLRequest
     {
         var req = request
         req.setValue(API.ACCEPT_KEY_VALUE, forHTTPHeaderField: API.ACCEPT_KEY)

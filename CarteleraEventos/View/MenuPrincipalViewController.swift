@@ -2,7 +2,7 @@
 //  MenuPrincipalViewController.swift
 //  CarteleraEventos
 //
-//  Created by bandala on 10/13/18.
+//  Created by Karla Robledo Bandala on 10/13/18.
 //  Copyright © 2018 ESCAMA. All rights reserved.
 //
 
