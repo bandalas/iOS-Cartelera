@@ -26,6 +26,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var indSelected = 0
     var arrCategorias = [Category]()
     
+    let searchController = UISearchController(searchResultsController: nil) // UIViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +55,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 eve.favorites = true
             }
         }
+        
+        searchBar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -182,7 +186,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             eventosTableView.deselectRow(at: indexPath, animated: true)
             vistaDetalle.delegado = self
             indSelected = indexPath.row
-        }        
+        }
+        if segue.identifier == "categories_search"
+        {
+            let searchVC = segue.destination as! SearchCategoriesViewController
+            searchVC.arrCategories = self.arrCategorias
+        }
+       
     }
     
     @IBAction func unwindDetalle(for segue: UIStoryboardSegue, sender: Any?){
@@ -193,7 +203,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     //MARK: - Search Bar
-
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.performSegue(withIdentifier: "categories_search", sender: self)
+    }
     
 }

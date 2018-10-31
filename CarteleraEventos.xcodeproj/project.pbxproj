@@ -29,6 +29,7 @@
 		A2009A8F2183DEF700DCD5B8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2009A8E2183DEF700DCD5B8 /* API.swift */; };
 		A2009A912183E8F100DCD5B8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2009A902183E8F100DCD5B8 /* Category.swift */; };
 		A20224F221727165005AE674 /* MenuPrincipalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20224F121727165005AE674 /* MenuPrincipalViewController.swift */; };
+		A26BD5C221895D1300BE48D9 /* SearchCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BD5C121895D1300BE48D9 /* SearchCategoriesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,6 +72,7 @@
 		A2009A8E2183DEF700DCD5B8 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		A2009A902183E8F100DCD5B8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A20224F121727165005AE674 /* MenuPrincipalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPrincipalViewController.swift; sourceTree = "<group>"; };
+		A26BD5C121895D1300BE48D9 /* SearchCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoriesViewController.swift; sourceTree = "<group>"; };
 		C5BA5A66F4958C648EC5F6EA /* Pods-CarteleraEventos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarteleraEventos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos.debug.xcconfig"; sourceTree = "<group>"; };
 		CF902FEF8F66FA10698D89E8 /* Pods-CarteleraEventos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarteleraEventos.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,6 +169,7 @@
 		A20224F72172CD55005AE674 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A26BD5C121895D1300BE48D9 /* SearchCategoriesViewController.swift */,
 				A20224F121727165005AE674 /* MenuPrincipalViewController.swift */,
 				5525AADB20585590001E3E1C /* CustomTableViewCell.swift */,
 				7A731367209229F9004B867D /* EventoFavoritoViewController.swift */,
@@ -346,6 +349,7 @@
 				641E53B621784A410003A22D /* MapaViewController.swift in Sources */,
 				55AB6EE02078309100DB4199 /* FavDetalleViewController.swift in Sources */,
 				5525AAC420584882001E3E1C /* AppDelegate.swift in Sources */,
+				A26BD5C221895D1300BE48D9 /* SearchCategoriesViewController.swift in Sources */,
 				5525AAC620584882001E3E1C /* FirstViewController.swift in Sources */,
 				55AB6EAD20780CCD00DB4199 /* eventosFavoritos.xcdatamodeld in Sources */,
 				7A73136A20A25597004B867D /* ViewControllerInfo.swift in Sources */,
