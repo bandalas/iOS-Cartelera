@@ -17,8 +17,11 @@ class FilterSearchCollectionViewController: UICollectionViewController {
     
     var arrCategories = [String]()
     var arrCampus = [String]()
+    
     var arrDictionary: NSArray!
-    var appliedFilters = [String]()
+    var appliedCategoriesFilters:Set<String> = []
+    var appliedCampusFilters:Set<String> = []
+    
     var filterTypes = [Filter.FILTER_TYPE_ONE,Filter.FILTER_TYPE_TWO]
     
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
@@ -68,9 +71,6 @@ class FilterSearchCollectionViewController: UICollectionViewController {
 
     @IBAction func unwindFilters(for segue: UIStoryboardSegue, sender: Any?){
         print("IM BACK")
-        for el in appliedFilters{
-            print(el)
-        }
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -82,13 +82,17 @@ class FilterSearchCollectionViewController: UICollectionViewController {
             let indexPath = collectionView?.indexPathsForSelectedItems![0]
             if indexPath?.section == 0
             {
-                searchView.filterType = Filter.FILTER_TYPE_ONE
-                searchView.filterData = Array(completeEventCategories)[(indexPath?.row)!]
+                let tempSet: Set<String> = [Array(completeEventCategories)[(indexPath?.row)!]]
+                self.appliedCategoriesFilters = appliedCategoriesFilters.union(tempSet)
+                searchView.categoryFilters = self.appliedCategoriesFilters
+                searchView.campusFilters = self.appliedCampusFilters
             }
             else if indexPath?.section == 1
             {
-                searchView.filterType = Filter.FILTER_TYPE_TWO
-                searchView.filterData = arrCampus[(indexPath?.row)!]
+                let tempSet: Set<String> = [arrCampus[(indexPath?.row)!]]
+                self.appliedCampusFilters = appliedCampusFilters.union(tempSet)
+                searchView.campusFilters = self.appliedCampusFilters
+                searchView.categoryFilters = self.appliedCategoriesFilters
             }
         }
     }

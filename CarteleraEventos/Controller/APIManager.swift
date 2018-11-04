@@ -91,45 +91,43 @@ class APIManager
         }
     }
     
-    func getEventosByFilter(filterType: String, filterData: String, completion: @escaping ([Evento]) -> Void)
+    func getEventosByFilter(filterData: [String: [String]], completion: @escaping ([Evento]) -> Void)
     {
         var filteredEvents = [Evento]()
-        Alamofire.request(getBuildSearchQueryURLRequest(type: filterType, data: filterData)).responseJSON
-        {
-            (response) in if let arrEventsJSON = response.value as? [[String : Any]]
+        Alamofire.request(getBuildSearchQueryURLRequest(data: filterData)).responseJSON
             {
-                for eve in arrEventsJSON
+                (response) in if let arrEventsJSON = response.value as? [[String : Any]]
                 {
-                    print(eve)
-                    print("\n\n\n")
-                    let eventoTemp = Evento(ide: String(eve["id"] as! Int),
-                                            fotoURL: eve["photo"] as? String,
-                                            name: eve["name"] as? String,
-                                            startDate: eve["startDatetime"] as? String,
-                                            location: eve["location"] as? String,
-                                            contactEmail: eve["contactEmail"] as? String,
-                                            description: eve["description"] as? String,
-                                            requirements: eve["requirementsToRegister"] as? String,
-                                            schedule: eve["schedule"] as? String,
-                                            petFriendly: eve["petFriendly"] as? Int,
-                                            contactPhone: eve["contactPhone"] as? String,
-                                            category: eve["category"] as? String,
-                                            contactName: eve["contactName"] as? String,
-                                            cost: eve["cost"] as? String,
-                                            hasRegistration: eve["hasRegistration"] as? String,
-                                            cancelled: eve["cancelled"] as? String,
-                                            hasDeadline: eve["hasDeadline"] as? String,
-                                            prefix: eve["prefix"] as? String,
-                                            registrationDeadline: eve["registrationDeadline"] as? String,
-                                            registrationUrl: eve["registrationUrl"] as? String,
-                                            cancelMessage: eve["cancelMessage"] as? String,
-                                            campus: eve["campus"] as? String,
-                                            registrationMessage: eve["registrationMessage"] as? String)
-                    
-                    filteredEvents.append(eventoTemp)
+                    for eve in arrEventsJSON
+                    {
+                        let eventoTemp = Evento(ide: String(eve["id"] as! Int),
+                                                fotoURL: eve["photo"] as? String,
+                                                name: eve["name"] as? String,
+                                                startDate: eve["startDatetime"] as? String,
+                                                location: eve["location"] as? String,
+                                                contactEmail: eve["contactEmail"] as? String,
+                                                description: eve["description"] as? String,
+                                                requirements: eve["requirementsToRegister"] as? String,
+                                                schedule: eve["schedule"] as? String,
+                                                petFriendly: eve["petFriendly"] as? Int,
+                                                contactPhone: eve["contactPhone"] as? String,
+                                                category: eve["category"] as? String,
+                                                contactName: eve["contactName"] as? String,
+                                                cost: eve["cost"] as? String,
+                                                hasRegistration: eve["hasRegistration"] as? String,
+                                                cancelled: eve["cancelled"] as? String,
+                                                hasDeadline: eve["hasDeadline"] as? String,
+                                                prefix: eve["prefix"] as? String,
+                                                registrationDeadline: eve["registrationDeadline"] as? String,
+                                                registrationUrl: eve["registrationUrl"] as? String,
+                                                cancelMessage: eve["cancelMessage"] as? String,
+                                                campus: eve["campus"] as? String,
+                                                registrationMessage: eve["registrationMessage"] as? String)
+                        
+                        filteredEvents.append(eventoTemp)
+                    }
+                    completion(filteredEvents)
                 }
-                completion(filteredEvents)
-            }
         }
     }
     
@@ -160,10 +158,17 @@ class APIManager
         return addKeyValuesToURLRequest(request: categoriesURL)
     }
     
-    private func getBuildSearchQueryURLRequest(type: String, data: String) -> URLRequest
+    private func getBuildSearchQueryURLRequest(data: [String: [String]]) -> URLRequest
     {
-        let queryURL = API.EVENTS_QUERY_URL+type+"="+data
+        var queryURL = API.EVENTS_QUERY_URL
+        for (key,value) in data {
+            print(value)
+            for filterName in value {
+                queryURL = queryURL+key+"="+filterName+"&"
+            }
+        }
         let urlString:String = (queryURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed))!
+        
         print("@@@@@\(urlString)")
         let completeQueryURL = URLRequest(url: URL(string: urlString)!)
         return addKeyValuesToURLRequest(request: completeQueryURL)

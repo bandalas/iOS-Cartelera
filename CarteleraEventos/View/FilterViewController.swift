@@ -9,35 +9,35 @@
 import UIKit
 
 
-struct GlobalFilter{
-    static var arrEventsGlobal = [Evento]()
-    static var arrCategoriesGlobal = [String]()
-}
-
 class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,
-                            protocoloModificarFavorito
+                            protocoloModificarFavorito, UISearchBarDelegate
 {
     func modificaFavorito(fav: Bool, ide: Int) {
         
     }
     
     @IBOutlet weak var filteredTable: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var filterBttn: UIButton!
     
-    var filterType : String!
-    var filterData : String!
     var filteredEvents = [Evento]()
+    
+    var categoryFilters:Set<String> = []
+    var campusFilters:Set<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        searchBar.delegate = self
+        print("!!RIP!!\(categoryFilters.count)")
         performSearch()
     }
     
     private func performSearch()
     {
+        let dictionaryFilter = makeFilterMap()
         let API = APIManager.sharedInstance
-        API.getEventosByFilter(filterType: filterType, filterData: filterData) { (arrEventos) in
+        API.getEventosByFilter(filterData: dictionaryFilter) { (arrEventos) in
             self.filteredEvents = arrEventos
             self.filteredTable.reloadData()
         }
@@ -73,6 +73,33 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    // MARK: - API Functions
+    private func makeFilterMap() -> [String: [String]]
+    {
+        for el in categoryFilters{
+            print(el)
+        }
+        var result = [String: [String]]()
+        if categoryFilters.count != 0
+        {
+            var existingItems = result[Filter.FILTER_TYPE_ONE] ?? [String]()
+            for el in categoryFilters
+            {
+                existingItems.append(el)
+            }
+            result[Filter.FILTER_TYPE_ONE] = existingItems
+        }
+        if campusFilters.count != 0
+        {
+            var existingItems = result[Filter.FILTER_TYPE_TWO] ?? [String]()
+            for el in campusFilters
+            {
+                existingItems.append(el)
+            }
+            result[Filter.FILTER_TYPE_TWO] = existingItems
+        }
+        return result
+    }
     
     // MARK: - Navigation
 
@@ -87,6 +114,13 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             filteredTable.deselectRow(at: indexPath, animated: true)
             vistaDetalle.delegado = self
         }
+        if (sender as! UIButton) == filterBttn {
+            let filterView = segue.destination as! FilterSearchCollectionViewController
+            //appliedFilters.append(filterData)
+            filterView.appliedCampusFilters = self.campusFilters
+            filterView.appliedCategoriesFilters = self.categoryFilters
+        }
+        
     }
     
 }

@@ -189,7 +189,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         if segue.identifier == "categories_search"
         {
-            let searchVC = segue.destination as! CategoriesCollectionViewController
+            let searchVC = segue.destination as! FilterSearchCollectionViewController
             searchVC.arrCategories = self.arrCategorias
         }
        
