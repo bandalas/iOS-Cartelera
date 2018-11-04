@@ -55,8 +55,10 @@ class Evento
         self.id = Int(ide)!
         self.name = name!
         self.favorites = false
-        // Setting the image of the event given an url
-        let url = URL(string: fotoURL!)
+        // In case of spaces, replace the URL with %
+        // DO NOT REMOVE. Can throw an exception
+        let urlString:String = (fotoURL?.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed))!
+        let url = URL(string: urlString)
         let imgData = try? Data(contentsOf: url!)
         if imgData != nil
         {

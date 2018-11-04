@@ -13,7 +13,7 @@ import CoreData
 
 struct GlobalVar {
     static var arrEventsGlobal = [Evento]()
-    static var arrCategoriesGlobal = [Category]()
+    static var arrCategoriesGlobal = [String]()
 }
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate {
@@ -24,7 +24,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var arrEventos = [Evento]()
     var arrIndFav = [Int]()
     var indSelected = 0
-    var arrCategorias = [Category]()
+    var arrCategorias = [String]()
     
     let searchController = UISearchController(searchResultsController: nil) // UIViewController
     
@@ -32,19 +32,19 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         let API = APIManager.sharedInstance
+        
+        API.getCategories { (arrCategorias) in
+            self.arrCategorias = arrCategorias
+            GlobalVar.arrCategoriesGlobal = arrCategorias
+        }
         API.getEventos { (arrEventos) in
             self.arrEventos = arrEventos
             GlobalVar.arrEventsGlobal = arrEventos
             self.eventosTableView.reloadData()
         }
         
-        API.getCategories { (arrCategorias) in
-            self.arrCategorias = arrCategorias
-            GlobalVar.arrCategoriesGlobal = arrCategorias
-        }
-        
-        self.arrEventos = GlobalVar.arrEventsGlobal
         self.arrCategorias = GlobalVar.arrCategoriesGlobal
+        self.arrEventos = GlobalVar.arrEventsGlobal
         
         // Agrega el estatus de favorito a los eventos
         buscaFavoritos()
@@ -189,7 +189,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         if segue.identifier == "categories_search"
         {
-            let searchVC = segue.destination as! SearchCategoriesViewController
+            let searchVC = segue.destination as! CategoriesCollectionViewController
             searchVC.arrCategories = self.arrCategorias
         }
        

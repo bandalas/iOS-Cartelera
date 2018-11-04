@@ -14,6 +14,10 @@ class API {
     public static let UPCOMING_EVENTS_URL : String = "https://cartelerai-api.herokuapp.com/upcoming_events"
     public static let CATEGORIES_URL : String = "https://cartelerai-api.herokuapp.com/categories"
     
+    public static let EVENTS_QUERY_URL : String = "https://cartelerai-api.herokuapp.com/events?"
+    public static let CAMPUS_QUERY: String = "campus="
+    public static let CATEGORY_QUERY: String = "category="
+    
     public static let ACCEPT_KEY : String = "Accept"
     public static let ACCEPT_KEY_VALUE : String = "application/vnd.cartelera-api.v1"
     
