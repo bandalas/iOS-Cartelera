@@ -111,7 +111,7 @@ class Evento
 // Function that returns the gregorian version of the given date
 func makeDate(year: Int, month: Int, day: Int, hr: Int, min: Int, sec: Int) -> Date
 {
-    var calendar = Calendar(identifier: .gregorian)
+    let calendar = Calendar(identifier: .gregorian)
     let components = DateComponents(year: year, month: month, day: day, hour: hr, minute: min, second: sec)
     return calendar.date(from: components)!
 }

@@ -13,13 +13,16 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                             protocoloModificarFavorito, UISearchBarDelegate
 {
     func modificaFavorito(fav: Bool, ide: Int) {
-        
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBOutlet weak var filteredTable: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filterBttn: UIButton!
     
+    @IBAction func cancelButton(_ sender: UIButton) {
+        
+    }
     var filteredEvents = [Evento]()
     
     var categoryFilters:Set<String> = []
