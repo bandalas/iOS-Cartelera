@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,7 @@
 		A21FAA00218EF19C00009A85 /* SectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21FA9FF218EF19C00009A85 /* SectionHeaderCollectionReusableView.swift */; };
 		A21FAA02218EF3F000009A85 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21FAA01218EF3F000009A85 /* Filter.swift */; };
 		A21FAA05218EFB2E00009A85 /* CampusList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A21FAA03218EF79100009A85 /* CampusList.plist */; };
+		A2BB0B9521980A1F004A2B38 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BB0B9421980A1F004A2B38 /* PaddingLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +84,7 @@
 		A21FA9FF218EF19C00009A85 /* SectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A21FAA01218EF3F000009A85 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		A21FAA03218EF79100009A85 /* CampusList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CampusList.plist; sourceTree = "<group>"; };
+		A2BB0B9421980A1F004A2B38 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		C5BA5A66F4958C648EC5F6EA /* Pods-CarteleraEventos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarteleraEventos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos.debug.xcconfig"; sourceTree = "<group>"; };
 		CF902FEF8F66FA10698D89E8 /* Pods-CarteleraEventos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarteleraEventos.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 				A2009A8E2183DEF700DCD5B8 /* API.swift */,
 				A2009A902183E8F100DCD5B8 /* Category.swift */,
 				A21FAA01218EF3F000009A85 /* Filter.swift */,
+				A2BB0B9421980A1F004A2B38 /* PaddingLabel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,14 +244,12 @@
 				TargetAttributes = {
 					5525AABF20584882001E3E1C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9XJ54N8CBD;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 5525AABB20584882001E3E1C /* Build configuration list for PBXProject "CarteleraEventos" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -365,6 +366,7 @@
 				A21FAA02218EF3F000009A85 /* Filter.swift in Sources */,
 				A20224F221727165005AE674 /* MenuPrincipalViewController.swift in Sources */,
 				7A731368209229F9004B867D /* EventoFavoritoViewController.swift in Sources */,
+				A2BB0B9521980A1F004A2B38 /* PaddingLabel.swift in Sources */,
 				641E53B621784A410003A22D /* MapaViewController.swift in Sources */,
 				55AB6EE02078309100DB4199 /* FavDetalleViewController.swift in Sources */,
 				5525AAC420584882001E3E1C /* AppDelegate.swift in Sources */,
@@ -504,7 +506,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -525,12 +528,18 @@
 				);
 				INFOPLIST_FILE = CarteleraEventos/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosECMA;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosESCAMA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -549,12 +558,18 @@
 				);
 				INFOPLIST_FILE = CarteleraEventos/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosECMA;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosESCAMA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

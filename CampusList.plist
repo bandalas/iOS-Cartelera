@@ -4,6 +4,14 @@
 <array>
 	<dict>
 		<key>nombre</key>
+		<string>CCM</string>
+		<key>latitud</key>
+		<string></string>
+		<key>longitud</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>nombre</key>
 		<string>MTY</string>
 		<key>latitud</key>
 		<string></string>

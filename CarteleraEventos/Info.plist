@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Cartelera Eventos</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -56,6 +58,8 @@
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
 	<string>$(PRODUCT_NAME) Guardar evento</string>
+	<key>NSMainStoryboardFile</key>
+	<string>Main</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -29,7 +29,7 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         searchBar.delegate = self
-        print("!!RIP!!\(categoryFilters.count)")
+        print("\(categoryFilters.count)")
         performSearch()
     }
     
@@ -116,7 +116,6 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         if (sender as! UIButton) == filterBttn {
             let filterView = segue.destination as! FilterSearchCollectionViewController
-            //appliedFilters.append(filterData)
             filterView.appliedCampusFilters = self.campusFilters
             filterView.appliedCategoriesFilters = self.categoryFilters
         }

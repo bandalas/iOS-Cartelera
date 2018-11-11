@@ -43,6 +43,12 @@ class FilterSearchCollectionViewController: UICollectionViewController {
         else{
             print("Missing CampusList file")
         }
+        
+        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+            let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
+            let cellWidth = (view.frame.width - max(0, itemsPerRow - 1)*horizontalSpacing)/itemsPerRow
+            flowLayout.itemSize = CGSize(width: cellWidth, height: 50)
+        }
     }
     
     func fillCategoriesEventMap()
@@ -60,8 +66,11 @@ class FilterSearchCollectionViewController: UICollectionViewController {
             let object = element as! NSDictionary
             for(key,_) in object
             {
-                let campusName = object.value(forKey: key as! String)
-                self.arrCampus.append(campusName as! String)
+                if key as! String == "nombre"
+                {
+                    let campusName = object.value(forKey: key as! String)
+                    self.arrCampus.append(campusName as! String)
+                }
             }
         }
     }
@@ -70,7 +79,7 @@ class FilterSearchCollectionViewController: UICollectionViewController {
     // MARK: - Navigation
 
     @IBAction func unwindFilters(for segue: UIStoryboardSegue, sender: Any?){
-        print("IM BACK")
+        
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -142,6 +151,8 @@ class FilterSearchCollectionViewController: UICollectionViewController {
         sectionHeader.sectionName = filterTypes[indexPath.row]
         return sectionHeader;
     }
+    
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
