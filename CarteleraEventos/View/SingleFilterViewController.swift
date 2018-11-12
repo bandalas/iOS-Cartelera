@@ -9,7 +9,7 @@
 import UIKit
 
 
-class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate
+class SingleFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate
  {
     func modificaFavorito(fav: Bool, ide: Int) {
         
@@ -19,12 +19,13 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var filteredEvents = [Evento]()
     
-    var categoryFilters:Set<String> = []
-    var campusFilters:Set<String> = []
+    var categoryFilters : String?
+    var campusFilters : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(onMoreFilterClick))
         performSearch()
         
     }
@@ -69,29 +70,21 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    
     // MARK: - API Functions
     private func makeFilterMap() -> [String: [String]]
     {
-        for el in categoryFilters{
-            print(el)
-        }
         var result = [String: [String]]()
-        if categoryFilters.count != 0
+        if let filterCategory = self.categoryFilters
         {
             var existingItems = result[Filter.FILTER_TYPE_ONE] ?? [String]()
-            for el in categoryFilters
-            {
-                existingItems.append(el)
-            }
+            existingItems.append(filterCategory)
             result[Filter.FILTER_TYPE_ONE] = existingItems
         }
-        if campusFilters.count != 0
+        if let filterCampus = self.campusFilters
         {
             var existingItems = result[Filter.FILTER_TYPE_TWO] ?? [String]()
-            for el in campusFilters
-            {
-                existingItems.append(el)
-            }
+            existingItems.append(filterCampus)
             result[Filter.FILTER_TYPE_TWO] = existingItems
         }
         return result
@@ -110,7 +103,17 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             filteredTable.deselectRow(at: indexPath, animated: true)
             vistaDetalle.delegado = self
         }
+        if (segue.identifier == "more_filter")
+        {
+            let moreView = segue.destination as! MoreFilterSearchViewController
+            
+        }
         
+    }
+    
+    func onMoreFilterClick()
+    {
+        performSegue(withIdentifier: "more_filter", sender: self)
     }
     
     
