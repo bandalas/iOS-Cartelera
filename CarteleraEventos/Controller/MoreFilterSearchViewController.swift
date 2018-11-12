@@ -2,7 +2,7 @@
 //  MoreFilterSearchViewController.swift
 //  CarteleraEventos
 //
-//  Created by bandala on 11/12/18.
+//  Created by Karla Robledo Bandala on 11/12/18.
 //  Copyright © 2018 ESCAMA. All rights reserved.
 //
 
@@ -43,12 +43,6 @@ class MoreFilterSearchViewController: UICollectionViewController {
     }
     
     
-    // MARK: - Navigation
-    
-    @IBAction func unwindFilters(for segue: UIStoryboardSegue, sender: Any?){
-        
-    }
-    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -58,15 +52,13 @@ class MoreFilterSearchViewController: UICollectionViewController {
             let indexPath = sender as! NSIndexPath
             if indexPath.section == 0
             {
-                let tempSet: Set<String> = [Array(completeEventCategories)[(indexPath.row)]]
-                self.appliedCategoriesFilters = appliedCategoriesFilters.union(tempSet)
+                searchView.newCategoryFilter = Array(completeEventCategories)[indexPath.row]
                 searchView.categoryFilters = self.appliedCategoriesFilters
                 searchView.campusFilters = self.appliedCampusFilters
             }
             else if indexPath.section == 1
             {
-                let tempSet: Set<String> = [arrCampus[(indexPath.row)]]
-                self.appliedCampusFilters = appliedCampusFilters.union(tempSet)
+                searchView.newCampusFilter = arrCampus[indexPath.row]
                 searchView.campusFilters = self.appliedCampusFilters
                 searchView.categoryFilters = self.appliedCategoriesFilters
             }

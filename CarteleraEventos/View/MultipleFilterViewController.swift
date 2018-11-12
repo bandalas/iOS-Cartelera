@@ -2,7 +2,7 @@
 //  MultipleFilterViewController.swift
 //  CarteleraEventos
 //
-//  Created by bandala on 11/12/18.
+//  Created by Karla Robledo Bandala on 11/12/18.
 //  Copyright © 2018 ESCAMA. All rights reserved.
 //
 
@@ -21,11 +21,16 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
     var categoryFilters:Set<String> = []
     var campusFilters:Set<String> = []
     
+    var newCategoryFilter: String?
+    var newCampusFilter: String?
+    
+    var isCategoryFilter:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         performSearch()
-        
+        setTitle()
     }
     
     private func performSearch()
@@ -72,9 +77,7 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - API Functions
     private func makeFilterMap() -> [String: [String]]
     {
-        for el in categoryFilters{
-            print(el)
-        }
+        
         var result = [String: [String]]()
         if categoryFilters.count != 0
         {
@@ -94,6 +97,22 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
             }
             result[Filter.FILTER_TYPE_TWO] = existingItems
         }
+        
+        if let tempFilter = self.newCategoryFilter
+        {
+            var existingItems = result[Filter.FILTER_TYPE_ONE] ?? [String]()
+            existingItems.append(tempFilter)
+            result[Filter.FILTER_TYPE_ONE] = existingItems
+            isCategoryFilter = true
+        }
+        
+        if let tempFilter = self.newCampusFilter
+        {
+            var existingItems = result[Filter.FILTER_TYPE_TWO] ?? [String]()
+            existingItems.append(tempFilter)
+            result[Filter.FILTER_TYPE_TWO] = existingItems
+        }
+        
         return result
     }
     
@@ -113,9 +132,14 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
         
     }
     
-    func onMoreFilterClick()
+    private func setTitle()
     {
-        performSegue(withIdentifier: "more_filter", sender: self)
+        if isCategoryFilter {
+            navigationItem.title = newCategoryFilter!
+        }
+        else {
+            navigationItem.title = newCampusFilter!
+        }
     }
-    
+
 }

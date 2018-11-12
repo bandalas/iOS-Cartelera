@@ -22,12 +22,14 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
     var categoryFilters : String?
     var campusFilters : String?
     
+    var isCategoryFilter:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(onMoreFilterClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filtro Adicional", style: .plain, target: self, action: #selector(onMoreFilterClick))
         performSearch()
-        
+        setTitle()
     }
     
     private func performSearch()
@@ -77,6 +79,7 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
         var result = [String: [String]]()
         if let filterCategory = self.categoryFilters
         {
+            isCategoryFilter = true
             var existingItems = result[Filter.FILTER_TYPE_ONE] ?? [String]()
             existingItems.append(filterCategory)
             result[Filter.FILTER_TYPE_ONE] = existingItems
@@ -101,14 +104,32 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
             let indexPath = filteredTable.indexPathForSelectedRow!
             vistaDetalle.eveTemp = filteredEvents[indexPath.row]
             filteredTable.deselectRow(at: indexPath, animated: true)
+            print("hey")
             vistaDetalle.delegado = self
         }
         if (segue.identifier == "more_filter")
         {
             let moreView = segue.destination as! MoreFilterSearchViewController
-            
+            if isCategoryFilter {
+                let tempSet : Set<String> = [categoryFilters!]
+                moreView.appliedCategoriesFilters = tempSet
+            }
+            else {
+                let tempSet : Set<String> = [campusFilters!]
+                moreView.appliedCampusFilters = tempSet
+            }
         }
         
+    }
+    
+    private func setTitle()
+    {
+        if isCategoryFilter {
+            navigationItem.title = categoryFilters!
+        }
+        else {
+            navigationItem.title = campusFilters!
+        }
     }
     
     func onMoreFilterClick()
