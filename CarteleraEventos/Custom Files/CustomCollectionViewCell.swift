@@ -19,7 +19,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         lblTitle.layer.backgroundColor = UIColor.red.cgColor
         lblTitle.textColor = UIColor.white
         lblTitle.layer.cornerRadius = 20
-        lblTitle.font = UIFont.boldSystemFont(ofSize: 14)
+        lblTitle.font = UIFont.boldSystemFont(ofSize: 13)
     }
     
 }

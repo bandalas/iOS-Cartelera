@@ -16,10 +16,9 @@ struct GlobalVar {
     static var arrCategoriesGlobal = [String]()
 }
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito {
     
     @IBOutlet weak var eventosTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     var arrEventos = [Evento]()
     var arrIndFav = [Int]()
@@ -43,7 +42,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.eventosTableView.reloadData()
         }
         
-        self.arrCategorias = GlobalVar.arrCategoriesGlobal
         self.arrEventos = GlobalVar.arrEventsGlobal
         
         // Agrega el estatus de favorito a los eventos
@@ -55,8 +53,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 eve.favorites = true
             }
         }
-        
-        searchBar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -202,10 +198,5 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func unwindInfo(for segue: UIStoryboardSegue, sender: Any?){
     }
     
-    //MARK: - Search Bar
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.performSegue(withIdentifier: "categories_search", sender: self)
-    }
     
 }

@@ -9,14 +9,13 @@
 import UIKit
 
 class SectionHeaderCollectionReusableView: UICollectionReusableView {
-        
-    @IBOutlet weak private var sectionLbl: UILabel!
-    var sectionName : String!
+    
+    @IBOutlet weak var sectionLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        sectionLbl.text = sectionName
+        sectionLbl.font = UIFont.boldSystemFont(ofSize: 17)
     }
     
     

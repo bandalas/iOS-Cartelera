@@ -9,16 +9,13 @@
 import UIKit
 
 
-class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,
-                            protocoloModificarFavorito, UISearchBarDelegate
-{
+class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate
+ {
     func modificaFavorito(fav: Bool, ide: Int) {
         
     }
     
     @IBOutlet weak var filteredTable: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var filterBttn: UIButton!
     
     var filteredEvents = [Evento]()
     
@@ -28,9 +25,8 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        searchBar.delegate = self
-        print("\(categoryFilters.count)")
         performSearch()
+        
     }
     
     private func performSearch()
@@ -114,12 +110,8 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             filteredTable.deselectRow(at: indexPath, animated: true)
             vistaDetalle.delegado = self
         }
-        if (sender as! UIButton) == filterBttn {
-            let filterView = segue.destination as! FilterSearchCollectionViewController
-            filterView.appliedCampusFilters = self.campusFilters
-            filterView.appliedCategoriesFilters = self.categoryFilters
-        }
         
     }
+    
     
 }

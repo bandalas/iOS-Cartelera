@@ -30,11 +30,19 @@ class FilterSearchCollectionViewController: UICollectionViewController {
     var completeEventCategories:Set<String> = []
     
     let headerIdentifier : String = "sectionHeader"
-
+    
+    var currentSectionNumber = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        
+        self.arrCategories = GlobalVar.arrCategoriesGlobal
         fillCategoriesEventMap()
+        
         if let path = Bundle.main.path(forResource: "CampusList", ofType: "plist")
         {
             arrDictionary = NSArray(contentsOfFile: path)
@@ -43,6 +51,7 @@ class FilterSearchCollectionViewController: UICollectionViewController {
         else{
             print("Missing CampusList file")
         }
+        
         
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
             let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
@@ -88,17 +97,17 @@ class FilterSearchCollectionViewController: UICollectionViewController {
         if (segue.identifier == "category")
         {
             let searchView = segue.destination as! FilterViewController
-            let indexPath = collectionView?.indexPathsForSelectedItems![0]
-            if indexPath?.section == 0
+            let indexPath = sender as! NSIndexPath
+            if indexPath.section == 0
             {
-                let tempSet: Set<String> = [Array(completeEventCategories)[(indexPath?.row)!]]
+                let tempSet: Set<String> = [Array(completeEventCategories)[(indexPath.row)]]
                 self.appliedCategoriesFilters = appliedCategoriesFilters.union(tempSet)
                 searchView.categoryFilters = self.appliedCategoriesFilters
                 searchView.campusFilters = self.appliedCampusFilters
             }
-            else if indexPath?.section == 1
+            else if indexPath.section == 1
             {
-                let tempSet: Set<String> = [arrCampus[(indexPath?.row)!]]
+                let tempSet: Set<String> = [arrCampus[(indexPath.row)]]
                 self.appliedCampusFilters = appliedCampusFilters.union(tempSet)
                 searchView.campusFilters = self.appliedCampusFilters
                 searchView.categoryFilters = self.appliedCategoriesFilters
@@ -140,15 +149,20 @@ class FilterSearchCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.filterType = "category"
-        self.filterData = Array (completeEventCategories)[indexPath.row]
-        self.performSegue(withIdentifier: "category", sender: filterType)
+        self.performSegue(withIdentifier: "category", sender: indexPath)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
     {
         let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! SectionHeaderCollectionReusableView
-        sectionHeader.sectionName = filterTypes[indexPath.row]
+        if currentSectionNumber == 0 {
+            sectionHeader.sectionLbl.text = "CATEGORIAS"
+            currentSectionNumber += 1
+        }
+        else if currentSectionNumber == 1 {
+            sectionHeader.sectionLbl.text = "CAMPUS"
+            currentSectionNumber += 1
+        }
         return sectionHeader;
     }
     
