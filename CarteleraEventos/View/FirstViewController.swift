@@ -11,39 +11,79 @@
 import UIKit
 import CoreData
 
+/**
+ 
+ @Class: FirstViewController
+ @Description:
+    First view that gets loaded when the app is loaded. Deals with displaying the
+    correct data and fetching data from the API.
+ 
+ */
+
 struct GlobalVar {
     static var arrEventsGlobal = [Evento]()
     static var arrCategoriesGlobal = [String]()
 }
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito {
+/// Protocol that deals with displaying an activity indicator screen while data is being fetched
+protocol protocolImplementLoadingScreen {
+    var loadingScreen: LoadingScreen {get set}
+}
+
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, protocolImplementLoadingScreen  {
     
     @IBOutlet weak var eventosTableView: UITableView!
     
+    /// Array of all events
     var arrEventos = [Evento]()
-    var arrIndFav = [Int]()
-    var indSelected = 0
+    /// Array of all categories
     var arrCategorias = [String]()
     
-    let searchController = UISearchController(searchResultsController: nil) // UIViewController
+    var arrIndFav = [Int]()
+    var indSelected = 0
+    
+    ///Actividy Indicator View for when fetching data
+    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    var loadingScreen = LoadingScreen()
+    
+    /// Indicates whether the app is done fetching the categories data from the server
+    private var hasFetchedCategoriesData: Bool = false {
+        didSet {
+            // if the app is done fetching data & is done fetching events, it will stop displaying the activity indicator
+            if(hasFetchedEventsData){
+                loadingScreen.stopLoadingScreen(view: self.view, activityView: activityView)
+            }
+        }
+    }
+    
+    /// Indicates whether the app is done fetching the events data from the server
+    private var hasFetchedEventsData: Bool = false {
+        didSet {
+            addFavouriteStatusAfterFetched()
+            // if the app is done fetching data & is done fetching events, it will stop displaying the activity indicator
+            if(hasFetchedCategoriesData) {
+                loadingScreen.stopLoadingScreen(view: self.view, activityView: activityView)
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let API = APIManager.sharedInstance
+        loadingScreen.launchLoadingScreen(view: self.view, activityView: activityView)
+        fetchAPIData()
         
-        API.getCategories { (arrCategorias) in
-            self.arrCategorias = arrCategorias
-            GlobalVar.arrCategoriesGlobal = arrCategorias
-        }
-        API.getEventos { (arrEventos) in
-            self.arrEventos = arrEventos
-            GlobalVar.arrEventsGlobal = arrEventos
-            self.eventosTableView.reloadData()
-        }
-        
-        self.arrEventos = GlobalVar.arrEventsGlobal
-        
+    }
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func addFavouriteStatusAfterFetched()
+    {
         // Agrega el estatus de favorito a los eventos
         buscaFavoritos()
         for eve in GlobalVar.arrEventsGlobal
@@ -53,11 +93,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 eve.favorites = true
             }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // Funcion que se encarga de agregar o eliminar los favoritos de la base de datos
@@ -197,6 +232,27 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func unwindInfo(for segue: UIStoryboardSegue, sender: Any?){
     }
+    
+    // MARK: - API Data
+    
+    // Closure functions that are responsible for fetching data form the server
+    private func fetchAPIData()
+    {
+        let API = APIManager.sharedInstance
+        
+        API.getCategories { (arrCategorias) in
+            self.arrCategorias = arrCategorias
+            GlobalVar.arrCategoriesGlobal = arrCategorias
+            self.hasFetchedCategoriesData = true
+        }
+        API.getEventos { (arrEventos) in
+            self.arrEventos = arrEventos
+            GlobalVar.arrEventsGlobal = arrEventos
+            self.eventosTableView.reloadData()
+            self.hasFetchedEventsData = true
+        }
+    }
+    
     
     
 }
