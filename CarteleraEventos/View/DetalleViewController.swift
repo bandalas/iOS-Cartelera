@@ -10,6 +10,8 @@ import UIKit
 import EventKit
 import GoogleAPIClientForREST
 import GoogleSignIn
+import MapKit
+import CoreLocation
 
 protocol protocoloModificarFavorito{
     func modificaFavorito(fav: Bool, ide: Int )
@@ -44,7 +46,7 @@ extension UIView {
     }
 }
 
-class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
+class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate, CLLocationManagerDelegate {
     
     var eveTemp : Evento!
     var eveName : String!
@@ -74,6 +76,9 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
     
     @IBOutlet weak var lbCalendario: UIButton!
     private let scopes = [kGTLRAuthScopeCalendar]
+    
+    @IBOutlet weak var iMapView: MKMapView!
+    let locationsManager = CLLocationManager()
     
     private let service = GTLRCalendarService()
     let signInButton = GIDSignInButton()
@@ -140,6 +145,35 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
             imgPetFriendly.image = #imageLiteral(resourceName: "pet-white")
             lbPetFriendly.isHidden = false
         }
+        
+        
+        // MARK: - MapKit initializers
+        locationsManager.delegate = self
+        locationsManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationsManager.requestWhenInUseAuthorization()
+        locationsManager.startUpdatingLocation()
+        
+        var location = CLLocationCoordinate2D(latitude: 0,longitude: 0)
+        
+        switch eveTemp.campus {
+        case "MTY":
+            location.latitude = 25.65112
+            location.longitude = -100.289641
+        default:
+            location.latitude = 0
+            location.longitude = 0
+        }
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
+        let region = MKCoordinateRegion(center: location, span: span)
+        iMapView.setRegion(region, animated: true)
+        
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = eveTemp.name
+        annotation.subtitle = eveTemp.campus
+        iMapView.addAnnotation(annotation)
     }
     
     override func viewDidLayoutSubviews() {
@@ -348,6 +382,18 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         
         // 5
         self.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    // MARK: - Localization methods
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.iMapView.setRegion(region, animated: true)
+        self.locationsManager.stopUpdatingLocation()
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Errors: " + error.localizedDescription)
     }
     
 }
