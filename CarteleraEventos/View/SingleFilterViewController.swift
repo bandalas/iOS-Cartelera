@@ -9,11 +9,10 @@
 import UIKit
 
 
-class SingleFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate
- {
-    func modificaFavorito(fav: Bool, ide: Int) {
-        
-    }
+class SingleFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate, protocolImplementLoadingScreen
+{
+    var loadingScreen: LoadingScreen = LoadingScreen()
+    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     @IBOutlet weak var filteredTable: UITableView!
     
@@ -23,10 +22,17 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
     var campusFilters : String?
     var dateFilter : String?
     
+    var hasFetchedData: Bool = false {
+        didSet {
+            loadingScreen.stopLoadingScreen(view: self.view, activityView: activityView)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filtro Adicional", style: .plain, target: self, action: #selector(onMoreFilterClick))
+        loadingScreen.launchLoadingScreen(view: self.view, activityView: activityView)
         performSearch()
         setTitle()
     }
@@ -40,6 +46,7 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
             API.getEventosByFilter(filterData: dictionaryFilter) { (arrEventos) in
                 self.filteredEvents = arrEventos
                 self.filteredTable.reloadData()
+                self.hasFetchedData = true
             }
         }
         else
@@ -59,6 +66,7 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
                     default:
                         print()
                 }
+                self.hasFetchedData = true
                 filteredEvents = results
             }
         }
@@ -162,9 +170,13 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    func onMoreFilterClick()
+    @objc func onMoreFilterClick()
     {
         performSegue(withIdentifier: "more_filter", sender: self)
+    }
+    
+    func modificaFavorito(fav: Bool, ide: Int) {
+        
     }
     
     

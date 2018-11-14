@@ -39,6 +39,7 @@
 		A24F7F282199536900268A81 /* MoreFilterSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F7F272199536900268A81 /* MoreFilterSearchViewController.swift */; };
 		A2BB0B9521980A1F004A2B38 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BB0B9421980A1F004A2B38 /* PaddingLabel.swift */; };
 		A2ED5319219B5C88004E9064 /* EventsByDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ED5318219B5C88004E9064 /* EventsByDate.swift */; };
+		A2ED531D219BE5A6004E9064 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ED531C219BE5A6004E9064 /* LoadingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +92,7 @@
 		A24F7F272199536900268A81 /* MoreFilterSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreFilterSearchViewController.swift; sourceTree = "<group>"; };
 		A2BB0B9421980A1F004A2B38 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		A2ED5318219B5C88004E9064 /* EventsByDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsByDate.swift; sourceTree = "<group>"; };
+		A2ED531C219BE5A6004E9064 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		C5BA5A66F4958C648EC5F6EA /* Pods-CarteleraEventos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarteleraEventos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos.debug.xcconfig"; sourceTree = "<group>"; };
 		CF902FEF8F66FA10698D89E8 /* Pods-CarteleraEventos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarteleraEventos.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,6 +188,7 @@
 				A20E703C218E35D300D0117F /* FilterSearchCollectionViewController.swift */,
 				A24F7F272199536900268A81 /* MoreFilterSearchViewController.swift */,
 				A2ED5318219B5C88004E9064 /* EventsByDate.swift */,
+				A2ED531C219BE5A6004E9064 /* LoadingScreen.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				55004D6F2059FDA60087BF70 /* DetalleViewController.swift in Sources */,
 				5525AADA20584C16001E3E1C /* Evento.swift in Sources */,
 				A24F7F282199536900268A81 /* MoreFilterSearchViewController.swift in Sources */,
+				A2ED531D219BE5A6004E9064 /* LoadingScreen.swift in Sources */,
 				A2009A912183E8F100DCD5B8 /* Category.swift in Sources */,
 				5525AADC20585590001E3E1C /* CustomTableViewCell.swift in Sources */,
 				A21FAA02218EF3F000009A85 /* Filter.swift in Sources */,

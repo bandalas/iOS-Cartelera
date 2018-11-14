@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate
+class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate, protocolImplementLoadingScreen
 {
+    
     func modificaFavorito(fav: Bool, ide: Int) {
         
     }
@@ -25,11 +26,19 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
     var newCampusFilter: String?
     var dateFilter: String?
     
-    var isCategoryFilter:Bool = false
+    var loadingScreen: LoadingScreen = LoadingScreen()
+    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    
+    var hasFetchedData: Bool = false {
+        didSet {
+            loadingScreen.stopLoadingScreen(view: self.view, activityView: activityView)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        loadingScreen.launchLoadingScreen(view: self.view, activityView: activityView)
         performSearch()
         setTitle()
     }
@@ -38,7 +47,7 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
     {
         let dictionaryFilter = makeFilterMap()
         if dictionaryFilter.count > 0 {
-            print("hey")
+            
             let API = APIManager.sharedInstance
             API.getEventosByFilter(filterData: dictionaryFilter) { (arrEventos) in
                 self.filteredEvents = arrEventos
@@ -59,8 +68,8 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
                     }
                     self.filteredEvents = results
                 }
-                
                 self.filteredTable.reloadData()
+                self.hasFetchedData = true
             }
         }
         
@@ -127,7 +136,6 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
             var existingItems = result[Filter.FILTER_TYPE_ONE] ?? [String]()
             existingItems.append(tempFilter)
             result[Filter.FILTER_TYPE_ONE] = existingItems
-            isCategoryFilter = true
         }
         
         if let tempFilter = self.newCampusFilter

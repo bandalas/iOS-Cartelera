@@ -16,34 +16,56 @@ struct GlobalVar {
     static var arrCategoriesGlobal = [String]()
 }
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito {
+protocol protocolImplementLoadingScreen {
+    var loadingScreen: LoadingScreen {get set}
+}
+
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, protocolImplementLoadingScreen  {
     
     @IBOutlet weak var eventosTableView: UITableView!
+    var loadingScreen = LoadingScreen()
+    
+    private var hasFetchedCategoriesData: Bool = false {
+        didSet {
+            if(hasFetchedEventsData){
+                loadingScreen.stopLoadingScreen(view: self.view, activityView: activityView)
+            }
+        }
+    }
+    
+    private var hasFetchedEventsData: Bool = false {
+        didSet {
+            addFavouriteStatusAfterFetched()
+            if(hasFetchedCategoriesData) {
+                loadingScreen.stopLoadingScreen(view: self.view, activityView: activityView)
+            }
+        }
+    }
     
     var arrEventos = [Evento]()
     var arrIndFav = [Int]()
     var indSelected = 0
     var arrCategorias = [String]()
     
-    let searchController = UISearchController(searchResultsController: nil) // UIViewController
+    let searchController = UISearchController(searchResultsController: nil)
+    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let API = APIManager.sharedInstance
+        loadingScreen.launchLoadingScreen(view: self.view, activityView: activityView)
+        fetchAPIData()
         
-        API.getCategories { (arrCategorias) in
-            self.arrCategorias = arrCategorias
-            GlobalVar.arrCategoriesGlobal = arrCategorias
-        }
-        API.getEventos { (arrEventos) in
-            self.arrEventos = arrEventos
-            GlobalVar.arrEventsGlobal = arrEventos
-            self.eventosTableView.reloadData()
-        }
-        
-        self.arrEventos = GlobalVar.arrEventsGlobal
-        
+    }
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func addFavouriteStatusAfterFetched()
+    {
         // Agrega el estatus de favorito a los eventos
         buscaFavoritos()
         for eve in GlobalVar.arrEventsGlobal
@@ -53,11 +75,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 eve.favorites = true
             }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // Funcion que se encarga de agregar o eliminar los favoritos de la base de datos
@@ -197,6 +214,26 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func unwindInfo(for segue: UIStoryboardSegue, sender: Any?){
     }
+    
+    // MARK: - API Data
+    
+    private func fetchAPIData()
+    {
+        let API = APIManager.sharedInstance
+        
+        API.getCategories { (arrCategorias) in
+            self.arrCategorias = arrCategorias
+            GlobalVar.arrCategoriesGlobal = arrCategorias
+            self.hasFetchedCategoriesData = true
+        }
+        API.getEventos { (arrEventos) in
+            self.arrEventos = arrEventos
+            GlobalVar.arrEventsGlobal = arrEventos
+            self.eventosTableView.reloadData()
+            self.hasFetchedEventsData = true
+        }
+    }
+    
     
     
 }
