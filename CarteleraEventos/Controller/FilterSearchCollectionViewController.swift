@@ -15,18 +15,19 @@ struct GlobalFiltersList
     static var campusList = [String]()
     static var categoryList:Set<String> = []
 }
+
 class FilterSearchCollectionViewController: UICollectionViewController {
     
     var arrCategories = [String]()
     var arrCampus = [String]()
+    let arrDates = Filter.DATE_FILTER_ARRAY
     
     var arrDictionary: NSArray!
     
-    var filterTypes = [Filter.FILTER_TYPE_ONE,Filter.FILTER_TYPE_TWO]
+    var filterTypes = [Filter.FILTER_TYPE_ONE,Filter.FILTER_TYPE_TWO, Filter.FILTER_TYPE_THREE]
     
     fileprivate let itemsPerRow: CGFloat = 2
     let headerIdentifier : String = "sectionHeader"
-    var currentSectionNumber = 0
     
     var completeEventCategories:Set<String> = []
     
@@ -82,7 +83,6 @@ class FilterSearchCollectionViewController: UICollectionViewController {
             }
         }
     }
-
     
     // MARK: - Navigation
 
@@ -107,6 +107,11 @@ class FilterSearchCollectionViewController: UICollectionViewController {
                 let campusFilter = arrCampus[indexPath.row]
                 searchView.campusFilters = campusFilter
             }
+            else if indexPath.section == 2
+            {
+                let dateFilter = arrDates[indexPath.row]
+                searchView.dateFilter = dateFilter
+            }
         }
     }
 
@@ -123,6 +128,9 @@ class FilterSearchCollectionViewController: UICollectionViewController {
         if section == 1 {
             return arrCampus.count
         }
+        if section == 2 {
+            return arrDates.count
+        }
         return 0
     }
 
@@ -138,6 +146,11 @@ class FilterSearchCollectionViewController: UICollectionViewController {
             let campusName = arrCampus[indexPath.row]
             cell.lblTitle.text = campusName
         }
+        else if indexPath.section == 2
+        {
+            let dateFilter = arrDates[indexPath.row]
+            cell.lblTitle.text = dateFilter
+        }
         return cell
     }
 
@@ -150,13 +163,16 @@ class FilterSearchCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
     {
         let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! SectionHeaderCollectionReusableView
-        if currentSectionNumber == 0 {
+        
+        if indexPath.section == 0 {
             sectionHeader.sectionLbl.text = "CATEGORIAS"
-            currentSectionNumber += 1
         }
-        else if currentSectionNumber == 1 {
+        else if indexPath.section == 1 {
             sectionHeader.sectionLbl.text = "CAMPUS"
-            currentSectionNumber += 1
+        }
+        else if indexPath.section == 2
+        {
+            sectionHeader.sectionLbl.text = "FECHA"
         }
         return sectionHeader;
     }

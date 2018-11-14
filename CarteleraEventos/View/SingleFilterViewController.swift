@@ -21,8 +21,7 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
     
     var categoryFilters : String?
     var campusFilters : String?
-    
-    var isCategoryFilter:Bool = false
+    var dateFilter : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +34,35 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
     private func performSearch()
     {
         let dictionaryFilter = makeFilterMap()
-        let API = APIManager.sharedInstance
-        API.getEventosByFilter(filterData: dictionaryFilter) { (arrEventos) in
-            self.filteredEvents = arrEventos
-            self.filteredTable.reloadData()
+        if (dictionaryFilter.count > 0)
+        {
+            let API = APIManager.sharedInstance
+            API.getEventosByFilter(filterData: dictionaryFilter) { (arrEventos) in
+                self.filteredEvents = arrEventos
+                self.filteredTable.reloadData()
+            }
         }
+        else
+        {
+            if let date = dateFilter
+            {
+                let searchDateEvents = GlobalVar.arrEventsGlobal
+                let byDate = EventsByDate(events: searchDateEvents)
+                var results = [Evento]()
+                switch date{
+                    case Filter.DATE_FILTER_ARRAY[0]:
+                        results = byDate.getTodaysEvents()
+                    case Filter.DATE_FILTER_ARRAY[1]:
+                        results = byDate.getWeeksEvents()
+                    case Filter.DATE_FILTER_ARRAY[2]:
+                        results = byDate.getMonthsEvents()
+                    default:
+                        print()
+                }
+                filteredEvents = results
+            }
+        }
+        
     }
     
     // MARK: - Table Functions
@@ -79,7 +102,6 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
         var result = [String: [String]]()
         if let filterCategory = self.categoryFilters
         {
-            isCategoryFilter = true
             var existingItems = result[Filter.FILTER_TYPE_ONE] ?? [String]()
             existingItems.append(filterCategory)
             result[Filter.FILTER_TYPE_ONE] = existingItems
@@ -104,19 +126,21 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
             let indexPath = filteredTable.indexPathForSelectedRow!
             vistaDetalle.eveTemp = filteredEvents[indexPath.row]
             filteredTable.deselectRow(at: indexPath, animated: true)
-            print("hey")
             vistaDetalle.delegado = self
         }
         if (segue.identifier == "more_filter")
         {
             let moreView = segue.destination as! MoreFilterSearchViewController
-            if isCategoryFilter {
+            if let _ = categoryFilters {
                 let tempSet : Set<String> = [categoryFilters!]
                 moreView.appliedCategoriesFilters = tempSet
             }
-            else {
+            else if let _ = campusFilters {
                 let tempSet : Set<String> = [campusFilters!]
                 moreView.appliedCampusFilters = tempSet
+            }
+            else if let dateF = dateFilter {
+                moreView.appliedDateFilter = dateF
             }
         }
         
@@ -124,11 +148,17 @@ class SingleFilterViewController: UIViewController, UITableViewDelegate, UITable
     
     private func setTitle()
     {
-        if isCategoryFilter {
-            navigationItem.title = categoryFilters!
+        if let categoryF = categoryFilters
+        {
+            navigationItem.title = categoryF
         }
-        else {
-            navigationItem.title = campusFilters!
+        if let campusF = campusFilters
+        {
+            navigationItem.title = campusF
+        }
+        if let dateF = dateFilter
+        {
+            navigationItem.title = dateF
         }
     }
     

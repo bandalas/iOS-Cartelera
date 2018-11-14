@@ -12,6 +12,8 @@ class Filter: NSObject {
     
     public static let FILTER_TYPE_ONE = "category"
     public static let FILTER_TYPE_TWO = "campus"
-    public static let FILTER_TYPER_THREE = "precio"
+    public static let FILTER_TYPE_THREE = "date"
+    
+    public static let DATE_FILTER_ARRAY = ["Hoy", "Esta semana", "Este mes"];
     
 }

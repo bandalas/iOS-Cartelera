@@ -13,17 +13,18 @@ class MoreFilterSearchViewController: UICollectionViewController {
     
     var appliedCategoriesFilters:Set<String> = []
     var appliedCampusFilters:Set<String> = []
+    var appliedDateFilter: String?
     
-    var filterTypes = [Filter.FILTER_TYPE_ONE,Filter.FILTER_TYPE_TWO]
+    private var filterTypes = [Filter.FILTER_TYPE_ONE,Filter.FILTER_TYPE_TWO, Filter.FILTER_TYPE_THREE]
     
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     fileprivate let itemsPerRow: CGFloat = 2
     
-    var arrCampus = [String]()
-    var completeEventCategories:Set<String> = []
+    private var arrCampus = [String]()
+    private var completeEventCategories:Set<String> = []
+    private var arrDates = Filter.DATE_FILTER_ARRAY
     
-    let headerIdentifier : String = "sectionHeader"
-    var currentSectionNumber = 0
+    private let headerIdentifier : String = "sectionHeader"
     
     
     override func viewDidLoad() {
@@ -55,12 +56,20 @@ class MoreFilterSearchViewController: UICollectionViewController {
                 searchView.newCategoryFilter = Array(completeEventCategories)[indexPath.row]
                 searchView.categoryFilters = self.appliedCategoriesFilters
                 searchView.campusFilters = self.appliedCampusFilters
+                searchView.dateFilter = self.appliedDateFilter
             }
             else if indexPath.section == 1
             {
                 searchView.newCampusFilter = arrCampus[indexPath.row]
                 searchView.campusFilters = self.appliedCampusFilters
                 searchView.categoryFilters = self.appliedCategoriesFilters
+                searchView.dateFilter = self.appliedDateFilter
+            }
+            else if indexPath.section == 2
+            {
+                searchView.campusFilters = self.appliedCampusFilters
+                searchView.categoryFilters = self.appliedCategoriesFilters
+                searchView.dateFilter = arrDates[indexPath.row]
             }
         }
     }
@@ -78,6 +87,10 @@ class MoreFilterSearchViewController: UICollectionViewController {
         if section == 1 {
             return arrCampus.count
         }
+        if appliedDateFilter == nil && section == 2
+        {
+            return arrDates.count
+        }
         return 0
     }
     
@@ -93,6 +106,11 @@ class MoreFilterSearchViewController: UICollectionViewController {
             let campusName = arrCampus[indexPath.row]
             cell.lblTitle.text = campusName
         }
+        else if indexPath.section == 2 && appliedDateFilter == nil
+        {
+            let dateFilter = arrDates[indexPath.row]
+            cell.lblTitle.text = dateFilter
+        }
         return cell
     }
     
@@ -105,13 +123,17 @@ class MoreFilterSearchViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
     {
         let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! SectionHeaderCollectionReusableView
-        if currentSectionNumber == 0 {
+        if indexPath.section == 0 {
             sectionHeader.sectionLbl.text = "CATEGORIAS"
-            currentSectionNumber += 1
         }
-        else if currentSectionNumber == 1 {
+        else if indexPath.section == 1 {
             sectionHeader.sectionLbl.text = "CAMPUS"
-            currentSectionNumber += 1
+        }
+        else if indexPath.section == 2 && appliedDateFilter == nil {
+            sectionHeader.sectionLbl.text = "FECHA"
+        }
+        else if indexPath.section == 2 && appliedDateFilter != nil {
+            sectionHeader.sectionLbl.text = ""
         }
         return sectionHeader;
     }

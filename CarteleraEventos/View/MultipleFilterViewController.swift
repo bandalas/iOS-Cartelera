@@ -23,6 +23,7 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
     
     var newCategoryFilter: String?
     var newCampusFilter: String?
+    var dateFilter: String?
     
     var isCategoryFilter:Bool = false
     
@@ -36,11 +37,34 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
     private func performSearch()
     {
         let dictionaryFilter = makeFilterMap()
-        let API = APIManager.sharedInstance
-        API.getEventosByFilter(filterData: dictionaryFilter) { (arrEventos) in
-            self.filteredEvents = arrEventos
-            self.filteredTable.reloadData()
+        if dictionaryFilter.count > 0 {
+            print("hey")
+            let API = APIManager.sharedInstance
+            API.getEventosByFilter(filterData: dictionaryFilter) { (arrEventos) in
+                self.filteredEvents = arrEventos
+                
+                if let date = self.dateFilter
+                {
+                    let byDate = EventsByDate(events: self.filteredEvents)
+                    var results = [Evento]()
+                    switch date{
+                    case Filter.DATE_FILTER_ARRAY[0]:
+                        results = byDate.getTodaysEvents()
+                    case Filter.DATE_FILTER_ARRAY[1]:
+                        results = byDate.getWeeksEvents()
+                    case Filter.DATE_FILTER_ARRAY[2]:
+                        results = byDate.getMonthsEvents()
+                    default:
+                        print()
+                    }
+                    self.filteredEvents = results
+                }
+                
+                self.filteredTable.reloadData()
+            }
         }
+        
+        
     }
     
     // MARK: - Table Functions
@@ -134,11 +158,17 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
     
     private func setTitle()
     {
-        if isCategoryFilter {
-            navigationItem.title = newCategoryFilter!
+        if let categoryF = newCategoryFilter
+        {
+            navigationItem.title = categoryF
         }
-        else {
-            navigationItem.title = newCampusFilter!
+        if let campusF = newCampusFilter
+        {
+            navigationItem.title = campusF
+        }
+        if let dateF = dateFilter
+        {
+            navigationItem.title = dateF
         }
     }
 
