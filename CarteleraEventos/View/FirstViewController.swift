@@ -11,11 +11,21 @@
 import UIKit
 import CoreData
 
+/**
+ 
+ @Class: FirstViewController
+ @Description:
+    First view that gets loaded when the app is loaded. Deals with displaying the
+    correct data and fetching data from the API.
+ 
+ */
+
 struct GlobalVar {
     static var arrEventsGlobal = [Evento]()
     static var arrCategoriesGlobal = [String]()
 }
 
+/// Protocol that deals with displaying an activity indicator screen while data is being fetched
 protocol protocolImplementLoadingScreen {
     var loadingScreen: LoadingScreen {get set}
 }
@@ -23,32 +33,40 @@ protocol protocolImplementLoadingScreen {
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, protocolImplementLoadingScreen  {
     
     @IBOutlet weak var eventosTableView: UITableView!
+    
+    /// Array of all events
+    var arrEventos = [Evento]()
+    /// Array of all categories
+    var arrCategorias = [String]()
+    
+    var arrIndFav = [Int]()
+    var indSelected = 0
+    
+    ///Actividy Indicator View for when fetching data
+    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     var loadingScreen = LoadingScreen()
     
+    /// Indicates whether the app is done fetching the categories data from the server
     private var hasFetchedCategoriesData: Bool = false {
         didSet {
+            // if the app is done fetching data & is done fetching events, it will stop displaying the activity indicator
             if(hasFetchedEventsData){
                 loadingScreen.stopLoadingScreen(view: self.view, activityView: activityView)
             }
         }
     }
     
+    /// Indicates whether the app is done fetching the events data from the server
     private var hasFetchedEventsData: Bool = false {
         didSet {
             addFavouriteStatusAfterFetched()
+            // if the app is done fetching data & is done fetching events, it will stop displaying the activity indicator
             if(hasFetchedCategoriesData) {
                 loadingScreen.stopLoadingScreen(view: self.view, activityView: activityView)
             }
         }
     }
     
-    var arrEventos = [Evento]()
-    var arrIndFav = [Int]()
-    var indSelected = 0
-    var arrCategorias = [String]()
-    
-    let searchController = UISearchController(searchResultsController: nil)
-    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -217,6 +235,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - API Data
     
+    // Closure functions that are responsible for fetching data form the server
     private func fetchAPIData()
     {
         let API = APIManager.sharedInstance

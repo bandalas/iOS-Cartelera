@@ -8,6 +8,14 @@
 
 import UIKit
 
+/**
+ 
+ @Class: MultipleFilterViewController
+ @Description:
+     View that deals with a second filtered search
+ 
+ */
+
 class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate, protocolImplementLoadingScreen
 {
     
@@ -16,12 +24,15 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBOutlet weak var filteredTable: UITableView!
-    
+    /// Events that have been filtered according to the search
     var filteredEvents = [Evento]()
     
+    /// Previously applied filters to the search
+    // Set in order to avoid a search with a previously applied search
     var categoryFilters:Set<String> = []
     var campusFilters:Set<String> = []
     
+    /// New filters to apply
     var newCategoryFilter: String?
     var newCampusFilter: String?
     var dateFilter: String?
@@ -29,6 +40,7 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
     var loadingScreen: LoadingScreen = LoadingScreen()
     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
+    // Stops displaying the activity indicator screen once data is done being fetched
     var hasFetchedData: Bool = false {
         didSet {
             loadingScreen.stopLoadingScreen(view: self.view, activityView: activityView)
@@ -43,37 +55,40 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
         setTitle()
     }
     
+    // MARK: - Search Functions
+    
     private func performSearch()
     {
         let dictionaryFilter = makeFilterMap()
-        if dictionaryFilter.count > 0 {
-            
-            let API = APIManager.sharedInstance
-            API.getEventosByFilter(filterData: dictionaryFilter) { (arrEventos) in
-                self.filteredEvents = arrEventos
-                
-                if let date = self.dateFilter
-                {
-                    let byDate = EventsByDate(events: self.filteredEvents)
-                    var results = [Evento]()
-                    switch date{
-                    case Filter.DATE_FILTER_ARRAY[0]:
-                        results = byDate.getTodaysEvents()
-                    case Filter.DATE_FILTER_ARRAY[1]:
-                        results = byDate.getWeeksEvents()
-                    case Filter.DATE_FILTER_ARRAY[2]:
-                        results = byDate.getMonthsEvents()
-                    default:
-                        print()
-                    }
-                    self.filteredEvents = results
-                }
-                self.filteredTable.reloadData()
-                self.hasFetchedData = true
-            }
+        let API = APIManager.sharedInstance
+        
+        API.getEventosByFilter(filterData: dictionaryFilter) { (arrEventos) in
+            self.filteredEvents = arrEventos
+            self.filterByDate()
+            self.filteredTable.reloadData()
+            self.hasFetchedData = true
         }
-        
-        
+    }
+    
+    // Checks if the user performed a filter by date, if true, then the program will filter by date the previously filtered events –category or campus–
+    private func filterByDate()
+    {
+        if let date = self.dateFilter
+        {
+            let byDate = EventsByDate(events: self.filteredEvents)
+            var results = [Evento]()
+            switch date{
+            case Filter.DATE_FILTER_ARRAY[0]:
+                results = byDate.getTodaysEvents()
+            case Filter.DATE_FILTER_ARRAY[1]:
+                results = byDate.getWeeksEvents()
+            case Filter.DATE_FILTER_ARRAY[2]:
+                results = byDate.getMonthsEvents()
+            default:
+                print()
+            }
+            self.filteredEvents = results
+        }
     }
     
     // MARK: - Table Functions
@@ -110,34 +125,42 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - API Functions
     private func makeFilterMap() -> [String: [String]]
     {
-        
         var result = [String: [String]]()
+        
+        // Checks if the user previously performed a search by category
         if categoryFilters.count != 0
         {
             var existingItems = result[Filter.FILTER_TYPE_ONE] ?? [String]()
+            // Maps the category name to the correct filter
+            // EX. Category -> Artificial Intelligence
+            //     Category -> General
             for el in categoryFilters
             {
                 existingItems.append(el)
             }
             result[Filter.FILTER_TYPE_ONE] = existingItems
         }
+        // Checks if the user previously performed a search by campus
         if campusFilters.count != 0
         {
             var existingItems = result[Filter.FILTER_TYPE_TWO] ?? [String]()
+            // Maps the campus name to the correct filter
+            // EX. Campus -> CCM
+            //     Campus -> MTY
             for el in campusFilters
             {
                 existingItems.append(el)
             }
             result[Filter.FILTER_TYPE_TWO] = existingItems
         }
-        
+         // Checks if the user performed a new search by category
         if let tempFilter = self.newCategoryFilter
         {
             var existingItems = result[Filter.FILTER_TYPE_ONE] ?? [String]()
             existingItems.append(tempFilter)
             result[Filter.FILTER_TYPE_ONE] = existingItems
         }
-        
+        // Checks if the user performed a new search by campus
         if let tempFilter = self.newCampusFilter
         {
             var existingItems = result[Filter.FILTER_TYPE_TWO] ?? [String]()
