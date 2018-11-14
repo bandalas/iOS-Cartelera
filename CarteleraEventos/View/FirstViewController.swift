@@ -3,6 +3,8 @@
 //  CarteleraEventos
 //
 //  Created by Esteban Arocha Ortuño on 3/13/18.
+//  Created by Karla Robledo Bandala on 10/28/2018.
+//
 //  Copyright © 2018 ESCAMA. All rights reserved.
 //
 
@@ -11,12 +13,58 @@ import CoreData
 
 struct GlobalVar {
     static var arrEventsGlobal = [Evento]()
-    static var arrTagsGlobal = [Tags]()
+    static var arrCategoriesGlobal = [String]()
 }
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloModificarFavorito, UISearchBarDelegate {
     
-    // Function que se encarga de agregar o eliminar los favoritos de la base de datos
+    @IBOutlet weak var eventosTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var arrEventos = [Evento]()
+    var arrIndFav = [Int]()
+    var indSelected = 0
+    var arrCategorias = [String]()
+    
+    let searchController = UISearchController(searchResultsController: nil) // UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let API = APIManager.sharedInstance
+        
+        API.getCategories { (arrCategorias) in
+            self.arrCategorias = arrCategorias
+            GlobalVar.arrCategoriesGlobal = arrCategorias
+        }
+        API.getEventos { (arrEventos) in
+            self.arrEventos = arrEventos
+            GlobalVar.arrEventsGlobal = arrEventos
+            self.eventosTableView.reloadData()
+        }
+        
+        self.arrCategorias = GlobalVar.arrCategoriesGlobal
+        self.arrEventos = GlobalVar.arrEventsGlobal
+        
+        // Agrega el estatus de favorito a los eventos
+        buscaFavoritos()
+        for eve in GlobalVar.arrEventsGlobal
+        {
+            if (arrIndFav.contains(eve.id))
+            {
+                eve.favorites = true
+            }
+        }
+        
+        searchBar.delegate = self
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // Funcion que se encarga de agregar o eliminar los favoritos de la base de datos
     func modificaFavorito(fav: Bool, ide: Int) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -38,15 +86,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         {
             //Guardarlo
             let favEv = EventosFavoritos(context: managedContext)
-            
             favEv.setValue(ide, forKey: "ident")
-            
         }
         else if (resultados.count > 0 && !fav)
         {
             //Quitarlo
             managedContext.delete(resultados[0])
-            
         }
         do {
             try managedContext.save()
@@ -79,46 +124,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             print ("Error al leer \(error) \(error.userInfo)")
         }
         
-    }
-    
-    @IBOutlet weak var eventosTableView: UITableView!
-    
-    var arrEventos = [Evento]()
-    var arrIndFav = [Int]()
-    var indSelected = 0
-    var arrTags = [Tags]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let API = APIManager.sharedInstance
-        API.getEventos { (arrEventos) in
-            self.arrEventos = arrEventos
-            GlobalVar.arrEventsGlobal = arrEventos
-            self.eventosTableView.reloadData()
-        }
-        
-        self.arrEventos = GlobalVar.arrEventsGlobal
-        
-        arrTags = API.getTags()
-        GlobalVar.arrTagsGlobal = arrTags
-        print(API.tagsMap.count)
-        
-        // Agrega el estatus de favorito a los eventos
-        buscaFavoritos()
-        for eve in GlobalVar.arrEventsGlobal
-        {
-            if (arrIndFav.contains(eve.id))
-            {
-                eve.favorites = true
-            }
-        }
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //Una sección es utilizada por el título de la aplicación y la otra para desplegar los eventos.
@@ -172,9 +177,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    
-
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "mostrar")
         {
@@ -184,13 +186,26 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             eventosTableView.deselectRow(at: indexPath, animated: true)
             vistaDetalle.delegado = self
             indSelected = indexPath.row
-        }        
+        }
+        if segue.identifier == "categories_search"
+        {
+            let searchVC = segue.destination as! FilterSearchCollectionViewController
+            searchVC.arrCategories = self.arrCategorias
+        }
+       
     }
     
     @IBAction func unwindDetalle(for segue: UIStoryboardSegue, sender: Any?){
         GlobalVar.arrEventsGlobal = arrEventos
     }
+    
     @IBAction func unwindInfo(for segue: UIStoryboardSegue, sender: Any?){
+    }
+    
+    //MARK: - Search Bar
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.performSegue(withIdentifier: "categories_search", sender: self)
     }
     
 }

@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:CarteleraEventos/EventoFavoritoViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:CarteleraEventos.xcodeproj">
    </FileRef>
    <FileRef

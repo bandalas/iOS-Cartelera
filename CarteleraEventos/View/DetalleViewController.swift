@@ -10,6 +10,8 @@ import UIKit
 import EventKit
 import GoogleAPIClientForREST
 import GoogleSignIn
+import MapKit
+import CoreLocation
 
 protocol protocoloModificarFavorito{
     func modificaFavorito(fav: Bool, ide: Int )
@@ -44,7 +46,7 @@ extension UIView {
     }
 }
 
-class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
+class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate, CLLocationManagerDelegate {
     
     var eveTemp : Evento!
     var eveName : String!
@@ -75,13 +77,17 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
     @IBOutlet weak var lbCalendario: UIButton!
     private let scopes = [kGTLRAuthScopeCalendar]
     
+    
+    //MapKit vars
+    @IBOutlet weak var iMapView: MKMapView!
+    let locationsManager = CLLocationManager()
+    
     private let service = GTLRCalendarService()
     let signInButton = GIDSignInButton()
     let output = UITextView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         scrollView.contentSize = mainView.frame.size
         
@@ -105,6 +111,7 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         lbDescription.textContainerInset = UIEdgeInsetsMake(8,5,8,5)
         lbDescription.layer.cornerRadius = 5
         lbDescription.clipsToBounds = true
+        drawPin()
         
         // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
@@ -167,16 +174,6 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //MARK: - Modifica evento favorito
     
@@ -348,6 +345,37 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         
         // 5
         self.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    // MARK: - Localization methods
+    func drawPin(){
+        //Remove all previous annotations
+        let annotations = self.iMapView.annotations
+        self.iMapView.removeAnnotations(annotations)
+        
+        //begin search
+        let searchRequest = MKLocalSearchRequest()
+        searchRequest.naturalLanguageQuery = eveTemp.location
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        activeSearch.start { (response, error) in
+            if response == nil{
+                print("Error in search response for..." + self.eveTemp.location!)
+            }else{
+                
+                //Coordinates data
+                let lat = response?.boundingRegion.center.latitude
+                let long = response?.boundingRegion.center.longitude
+                //Create new annotation from data
+                let annotation = MKPointAnnotation()
+                annotation.title = self.eveName
+                annotation.subtitle = self.eveTemp.campus
+                annotation.coordinate = CLLocationCoordinate2DMake(lat!, long!)
+                
+                self.iMapView.addAnnotation(annotation)
+                let region = MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                self.iMapView.setRegion(region, animated: true)
+            }
+        }
     }
     
 }

@@ -1,17 +1,14 @@
 //
-//  Tags.swift
+//  Categories.swift
 //  CarteleraEventos
 //
-//  Created by Karla Robledo Bandala on 10/13/18.
+//  Created by bandala on 10/26/18.
 //  Copyright © 2018 ESCAMA. All rights reserved.
 //
 
-/*
- Modelo de Tag/Categoria que almacena el nombre de cada uno y los eventos correspondientes
- */
 import UIKit
 
-class Tags{
+class Category {
     var nombre : String!
     var todosEventos = [Evento]()
     
@@ -19,6 +16,4 @@ class Tags{
         self.nombre = nombre
         self.todosEventos = todosEventos
     }
-    
-    
 }

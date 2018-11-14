@@ -21,13 +21,20 @@
 		5564A80F205DC7F3005480E7 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5564A80E205DC7F3005480E7 /* APIManager.swift */; };
 		55AB6EAD20780CCD00DB4199 /* eventosFavoritos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55AB6EAB20780CCD00DB4199 /* eventosFavoritos.xcdatamodeld */; };
 		55AB6EE02078309100DB4199 /* FavDetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB6EDF2078309100DB4199 /* FavDetalleViewController.swift */; };
-		641E53B32178270C0003A22D /* EventosFavoritos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E53B12178270B0003A22D /* EventosFavoritos+CoreDataClass.swift */; };
-		641E53B42178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E53B22178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift */; };
+		641E53B32178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E53B12178270B0003A22D /* EventosFavoritos+CoreDataProperties.swift */; };
+		641E53B42178270C0003A22D /* EventosFavoritos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E53B22178270C0003A22D /* EventosFavoritos+CoreDataClass.swift */; };
 		641E53B621784A410003A22D /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E53B521784A410003A22D /* MapaViewController.swift */; };
 		7A731368209229F9004B867D /* EventoFavoritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A731367209229F9004B867D /* EventoFavoritoViewController.swift */; };
 		7A73136A20A25597004B867D /* ViewControllerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73136920A25597004B867D /* ViewControllerInfo.swift */; };
+		A2009A8F2183DEF700DCD5B8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2009A8E2183DEF700DCD5B8 /* API.swift */; };
+		A2009A912183E8F100DCD5B8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2009A902183E8F100DCD5B8 /* Category.swift */; };
 		A20224F221727165005AE674 /* MenuPrincipalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20224F121727165005AE674 /* MenuPrincipalViewController.swift */; };
-		A20224F92172F726005AE674 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20224F82172F726005AE674 /* Tags.swift */; };
+		A20E703D218E35D300D0117F /* FilterSearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20E703C218E35D300D0117F /* FilterSearchCollectionViewController.swift */; };
+		A20E703F218E380600D0117F /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20E703E218E380600D0117F /* CustomCollectionViewCell.swift */; };
+		A20E7041218E71F500D0117F /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20E7040218E71F500D0117F /* FilterViewController.swift */; };
+		A21FAA00218EF19C00009A85 /* SectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21FA9FF218EF19C00009A85 /* SectionHeaderCollectionReusableView.swift */; };
+		A21FAA02218EF3F000009A85 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21FAA01218EF3F000009A85 /* Filter.swift */; };
+		A21FAA05218EFB2E00009A85 /* CampusList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A21FAA03218EF79100009A85 /* CampusList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,13 +69,20 @@
 		557CA525B857861E271DB008 /* Pods_CarteleraEventos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarteleraEventos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AB6EAC20780CCD00DB4199 /* eventosFavoritos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eventosFavoritos.xcdatamodel; sourceTree = "<group>"; };
 		55AB6EDF2078309100DB4199 /* FavDetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavDetalleViewController.swift; sourceTree = "<group>"; };
-		641E53B12178270B0003A22D /* EventosFavoritos+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EventosFavoritos+CoreDataClass.swift"; path = "/Users/bandala/Documents/ITESM/Septimo Semestre/Dispositivos iOS/Proyecto Final/CarteleraEventos/CarteleraEventos/EventosFavoritos+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		641E53B22178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EventosFavoritos+CoreDataProperties.swift"; path = "/Users/bandala/Documents/ITESM/Septimo Semestre/Dispositivos iOS/Proyecto Final/CarteleraEventos/CarteleraEventos/EventosFavoritos+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		641E53B12178270B0003A22D /* EventosFavoritos+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EventosFavoritos+CoreDataProperties.swift"; path = "/Users/itzelmosso/Desktop/Arturo iOS/iOS-Cartelera/CarteleraEventos/EventosFavoritos+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		641E53B22178270C0003A22D /* EventosFavoritos+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EventosFavoritos+CoreDataClass.swift"; path = "/Users/itzelmosso/Desktop/Arturo iOS/iOS-Cartelera/CarteleraEventos/EventosFavoritos+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		641E53B521784A410003A22D /* MapaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		7A731367209229F9004B867D /* EventoFavoritoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventoFavoritoViewController.swift; sourceTree = "<group>"; };
 		7A73136920A25597004B867D /* ViewControllerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInfo.swift; sourceTree = "<group>"; };
+		A2009A8E2183DEF700DCD5B8 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		A2009A902183E8F100DCD5B8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A20224F121727165005AE674 /* MenuPrincipalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPrincipalViewController.swift; sourceTree = "<group>"; };
-		A20224F82172F726005AE674 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		A20E703C218E35D300D0117F /* FilterSearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSearchCollectionViewController.swift; sourceTree = "<group>"; };
+		A20E703E218E380600D0117F /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		A20E7040218E71F500D0117F /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		A21FA9FF218EF19C00009A85 /* SectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		A21FAA01218EF3F000009A85 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		A21FAA03218EF79100009A85 /* CampusList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CampusList.plist; sourceTree = "<group>"; };
 		C5BA5A66F4958C648EC5F6EA /* Pods-CarteleraEventos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarteleraEventos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos.debug.xcconfig"; sourceTree = "<group>"; };
 		CF902FEF8F66FA10698D89E8 /* Pods-CarteleraEventos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarteleraEventos.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarteleraEventos/Pods-CarteleraEventos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +104,7 @@
 		5525AAB720584882001E3E1C = {
 			isa = PBXGroup;
 			children = (
+				A21FAA03218EF79100009A85 /* CampusList.plist */,
 				7A73136920A25597004B867D /* ViewControllerInfo.swift */,
 				5525AAC220584882001E3E1C /* CarteleraEventos */,
 				5525AAC120584882001E3E1C /* Products */,
@@ -117,15 +132,10 @@
 				5525AAC320584882001E3E1C /* AppDelegate.swift */,
 				5525AAC920584882001E3E1C /* Main.storyboard */,
 				55AB6EDF2078309100DB4199 /* FavDetalleViewController.swift */,
-				5525AADB20585590001E3E1C /* CustomTableViewCell.swift */,
-				7A731367209229F9004B867D /* EventoFavoritoViewController.swift */,
-				641E53B12178270B0003A22D /* EventosFavoritos+CoreDataClass.swift */,
-				641E53B22178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift */,
 				5525AACC20584883001E3E1C /* Assets.xcassets */,
 				5525AACE20584883001E3E1C /* LaunchScreen.storyboard */,
 				5525AAD120584883001E3E1C /* Info.plist */,
 				55AB6EAB20780CCD00DB4199 /* eventosFavoritos.xcdatamodeld */,
-				A20224F121727165005AE674 /* MenuPrincipalViewController.swift */,
 			);
 			path = CarteleraEventos;
 			sourceTree = "<group>";
@@ -143,7 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				5525AAD920584C16001E3E1C /* Evento.swift */,
-				A20224F82172F726005AE674 /* Tags.swift */,
+				A2009A8E2183DEF700DCD5B8 /* API.swift */,
+				A2009A902183E8F100DCD5B8 /* Category.swift */,
+				A21FAA01218EF3F000009A85 /* Filter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,6 +163,8 @@
 		A20224F52172CC2A005AE674 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				641E53B22178270C0003A22D /* EventosFavoritos+CoreDataClass.swift */,
+				641E53B12178270B0003A22D /* EventosFavoritos+CoreDataProperties.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -160,6 +174,7 @@
 			children = (
 				641E53B521784A410003A22D /* MapaViewController.swift */,
 				5564A80E205DC7F3005480E7 /* APIManager.swift */,
+				A20E703C218E35D300D0117F /* FilterSearchCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -167,8 +182,14 @@
 		A20224F72172CD55005AE674 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A20224F121727165005AE674 /* MenuPrincipalViewController.swift */,
+				5525AADB20585590001E3E1C /* CustomTableViewCell.swift */,
+				7A731367209229F9004B867D /* EventoFavoritoViewController.swift */,
 				55004D6E2059FDA60087BF70 /* DetalleViewController.swift */,
 				5525AAC520584882001E3E1C /* FirstViewController.swift */,
+				A20E703E218E380600D0117F /* CustomCollectionViewCell.swift */,
+				A20E7040218E71F500D0117F /* FilterViewController.swift */,
+				A21FA9FF218EF19C00009A85 /* SectionHeaderCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,7 +241,7 @@
 				TargetAttributes = {
 					5525AABF20584882001E3E1C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9XJ54N8CBD;
+						DevelopmentTeam = PZ6ASBUWS3;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
@@ -249,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A21FAA05218EFB2E00009A85 /* CampusList.plist in Resources */,
 				5525AAD020584883001E3E1C /* LaunchScreen.storyboard in Resources */,
 				5525AACD20584883001E3E1C /* Assets.xcassets in Resources */,
 				5525AACB20584882001E3E1C /* Main.storyboard in Resources */,
@@ -333,20 +355,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				641E53B42178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift in Sources */,
+				A21FAA00218EF19C00009A85 /* SectionHeaderCollectionReusableView.swift in Sources */,
+				641E53B42178270C0003A22D /* EventosFavoritos+CoreDataClass.swift in Sources */,
+				A20E703F218E380600D0117F /* CustomCollectionViewCell.swift in Sources */,
 				55004D6F2059FDA60087BF70 /* DetalleViewController.swift in Sources */,
 				5525AADA20584C16001E3E1C /* Evento.swift in Sources */,
-				A20224F92172F726005AE674 /* Tags.swift in Sources */,
+				A2009A912183E8F100DCD5B8 /* Category.swift in Sources */,
 				5525AADC20585590001E3E1C /* CustomTableViewCell.swift in Sources */,
+				A21FAA02218EF3F000009A85 /* Filter.swift in Sources */,
 				A20224F221727165005AE674 /* MenuPrincipalViewController.swift in Sources */,
 				7A731368209229F9004B867D /* EventoFavoritoViewController.swift in Sources */,
 				641E53B621784A410003A22D /* MapaViewController.swift in Sources */,
 				55AB6EE02078309100DB4199 /* FavDetalleViewController.swift in Sources */,
 				5525AAC420584882001E3E1C /* AppDelegate.swift in Sources */,
+				A20E703D218E35D300D0117F /* FilterSearchCollectionViewController.swift in Sources */,
 				5525AAC620584882001E3E1C /* FirstViewController.swift in Sources */,
+				A20E7041218E71F500D0117F /* FilterViewController.swift in Sources */,
 				55AB6EAD20780CCD00DB4199 /* eventosFavoritos.xcdatamodeld in Sources */,
 				7A73136A20A25597004B867D /* ViewControllerInfo.swift in Sources */,
-				641E53B32178270C0003A22D /* EventosFavoritos+CoreDataClass.swift in Sources */,
+				641E53B32178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift in Sources */,
+				A2009A8F2183DEF700DCD5B8 /* API.swift in Sources */,
 				5564A80F205DC7F3005480E7 /* APIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,7 +518,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9XJ54N8CBD;
+				DEVELOPMENT_TEAM = PZ6ASBUWS3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -498,7 +526,7 @@
 				INFOPLIST_FILE = CarteleraEventos/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosECMA;
+				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosECMAMapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -514,7 +542,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9XJ54N8CBD;
+				DEVELOPMENT_TEAM = PZ6ASBUWS3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -522,7 +550,7 @@
 				INFOPLIST_FILE = CarteleraEventos/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosECMA;
+				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosECMAMapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;

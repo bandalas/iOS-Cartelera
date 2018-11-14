@@ -2,7 +2,7 @@
 //  MenuPrincipalViewController.swift
 //  CarteleraEventos
 //
-//  Created by bandala on 10/13/18.
+//  Created by Karla Robledo Bandala on 10/13/18.
 //  Copyright © 2018 ESCAMA. All rights reserved.
 //
 
@@ -17,7 +17,7 @@ class MenuPrincipalViewController: UITabBarController {
 
     override func viewDidLoad() {
         // Do any additional setup after loading the view.
-        self.selectedIndex = 1
+        self.selectedIndex = 0
     }
     
 }
