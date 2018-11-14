@@ -296,7 +296,7 @@
         <!--Detalle View Controller-->
         <scene sceneID="Ht0-dU-ptC">
             <objects>
-                <viewController id="1pW-dP-Nic" customClass="DetalleViewController" customModule="CarteleraEventos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detalle" id="1pW-dP-Nic" customClass="DetalleViewController" customModule="CarteleraEventos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="38z-4C-yVC"/>
                         <viewControllerLayoutGuide type="bottom" id="oOS-dW-rTw"/>
@@ -655,7 +655,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gn4-7e-F5F">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gn4-7e-F5F">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
@@ -955,7 +955,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button:z4c-rY-Iod:backgroundImage" width="48" height="48">
+        <image name="button:z4c-rY-Iod:backgroundImage" width="0.0" height="0.0">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGUFFYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEAcI
 ERYbHCIjKSw2PkJGSk1VJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlND

@@ -77,6 +77,8 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
     @IBOutlet weak var lbCalendario: UIButton!
     private let scopes = [kGTLRAuthScopeCalendar]
     
+    
+    //MapKit vars
     @IBOutlet weak var iMapView: MKMapView!
     let locationsManager = CLLocationManager()
     
@@ -86,7 +88,6 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         scrollView.contentSize = mainView.frame.size
         
@@ -110,6 +111,7 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         lbDescription.textContainerInset = UIEdgeInsetsMake(8,5,8,5)
         lbDescription.layer.cornerRadius = 5
         lbDescription.clipsToBounds = true
+        drawPin()
         
         // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
@@ -145,35 +147,6 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
             imgPetFriendly.image = #imageLiteral(resourceName: "pet-white")
             lbPetFriendly.isHidden = false
         }
-        
-        
-        // MARK: - MapKit initializers
-        locationsManager.delegate = self
-        locationsManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationsManager.requestWhenInUseAuthorization()
-        locationsManager.startUpdatingLocation()
-        
-        var location = CLLocationCoordinate2D(latitude: 0,longitude: 0)
-        
-        switch eveTemp.campus {
-        case "MTY":
-            location.latitude = 25.65112
-            location.longitude = -100.289641
-        default:
-            location.latitude = 0
-            location.longitude = 0
-        }
-        
-        let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
-        let region = MKCoordinateRegion(center: location, span: span)
-        iMapView.setRegion(region, animated: true)
-        
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = eveTemp.name
-        annotation.subtitle = eveTemp.campus
-        iMapView.addAnnotation(annotation)
     }
     
     override func viewDidLayoutSubviews() {
@@ -201,16 +174,6 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //MARK: - Modifica evento favorito
     
@@ -385,15 +348,34 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
     }
     
     // MARK: - Localization methods
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        self.iMapView.setRegion(region, animated: true)
-        self.locationsManager.stopUpdatingLocation()
-    }
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Errors: " + error.localizedDescription)
+    func drawPin(){
+        //Remove all previous annotations
+        let annotations = self.iMapView.annotations
+        self.iMapView.removeAnnotations(annotations)
+        
+        //begin search
+        let searchRequest = MKLocalSearchRequest()
+        searchRequest.naturalLanguageQuery = eveTemp.location
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        activeSearch.start { (response, error) in
+            if response == nil{
+                print("Error in search response for..." + self.eveTemp.location!)
+            }else{
+                
+                //Coordinates data
+                let lat = response?.boundingRegion.center.latitude
+                let long = response?.boundingRegion.center.longitude
+                //Create new annotation from data
+                let annotation = MKPointAnnotation()
+                annotation.title = self.eveName
+                annotation.subtitle = self.eveTemp.campus
+                annotation.coordinate = CLLocationCoordinate2DMake(lat!, long!)
+                
+                self.iMapView.addAnnotation(annotation)
+                let region = MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                self.iMapView.setRegion(region, animated: true)
+            }
+        }
     }
     
 }
