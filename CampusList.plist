@@ -13,10 +13,10 @@
 	<dict>
 		<key>nombre</key>
 		<string>MTY</string>
-		<key>latitud</key>
-		<string></string>
-		<key>longitud</key>
-		<string></string>
+		<key>Latitud</key>
+		<real>25.65112</real>
+		<key>Longitud</key>
+		<real>-100.289641</real>
 	</dict>
 </array>
 </plist>
