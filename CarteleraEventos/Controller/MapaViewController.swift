@@ -5,7 +5,6 @@
 //  Created by Itzel Mosso on 17/10/18.
 //  Copyright © 2018 ESCAMA. All rights reserved.
 //
-
 import UIKit
 import MapKit
 import CoreLocation
@@ -48,7 +47,7 @@ class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled(){
-           setupLocationManager()
+            setupLocationManager()
             checkLocationAuthorization()
         }
     }
@@ -103,11 +102,9 @@ class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl){
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let detailView = sb.instantiateViewController(withIdentifier: "detalle") as! DetalleViewController
-        detailView.eveTemp = arrEventos[index]
-        print("tapped!!!")
-        self.navigationController?.pushViewController(detailView, animated: true)
-        
+        let detailView = sb.instantiateViewController(withIdentifier: "Detalle") as! DetalleViewController
+        detailView.eveTemp = arrEventos[0]
+        present(detailView,animated: true,completion: nil)
     }
     
     
@@ -119,39 +116,14 @@ class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         self.iMapView.removeAnnotations(annotations)
         
         for i in 0...arrEventos.count-1 {
-            let searchRequest = MKLocalSearchRequest()
-            searchRequest.region.center = iMapView.region.center
-            searchRequest.naturalLanguageQuery = arrEventos[i].location
-            let activeSearch = MKLocalSearch(request: searchRequest)
-            activeSearch.start { (response, error) in
-                if response == nil{
-                    print("Error in search response for..." + self.arrEventos[i].location!)
-                }else{
-                    
-                    
-                    //Coordinates data
-                    let lat = response?.boundingRegion.center.latitude
-                    let long = response?.boundingRegion.center.longitude
-                    //Create new annotation from data
-                    let annotation = MKPointAnnotation()
-                    annotation.title = self.arrEventos[i].name
-                    annotation.subtitle = self.arrEventos[i].campus
-                    annotation.coordinate = CLLocationCoordinate2DMake(lat!, long!)
-                    
-                    self.iMapView.addAnnotation(annotation)
-                    self.index=i
-                }
-            }
+            
+            let annotation = MKPointAnnotation()
+            annotation.title = self.arrEventos[i].name
+            annotation.subtitle = self.arrEventos[i].campus
+            annotation.coordinate = CLLocationCoordinate2DMake(self.arrEventos[i].latitude!, self.arrEventos[i].longitude!)
+            iMapView.addAnnotation(annotation)
+            iMapView.delegate = self
+            
         }
     }
-    /*
-    func handleLongPress(gestureRecognizer: UIGestureRecognizer){
-        if gestureRecognizer.state == .began{
-            let puntoTap = gestureRecognizer.location(in: self.iMapView)
-            let coordMapa = self.iMapView.convert(puntoTap, toCoordinateFrom: self.iMapView)
-            let annot = MKPointAnnotation()
-            annot.coordinate = coordMapa
-            iMapView.addAnnotation(annot)
-        }
-    }*/
 }

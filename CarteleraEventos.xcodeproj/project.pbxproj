@@ -74,8 +74,8 @@
 		557CA525B857861E271DB008 /* Pods_CarteleraEventos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarteleraEventos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AB6EAC20780CCD00DB4199 /* eventosFavoritos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eventosFavoritos.xcdatamodel; sourceTree = "<group>"; };
 		55AB6EDF2078309100DB4199 /* FavDetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavDetalleViewController.swift; sourceTree = "<group>"; };
-		641E53B12178270B0003A22D /* EventosFavoritos+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EventosFavoritos+CoreDataProperties.swift"; path = "/Users/itzelmosso/Desktop/Arturo iOS/iOS-Cartelera/CarteleraEventos/EventosFavoritos+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		641E53B22178270C0003A22D /* EventosFavoritos+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EventosFavoritos+CoreDataClass.swift"; path = "/Users/itzelmosso/Desktop/Arturo iOS/iOS-Cartelera/CarteleraEventos/EventosFavoritos+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		641E53B12178270B0003A22D /* EventosFavoritos+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EventosFavoritos+CoreDataProperties.swift"; path = "/Users/bandala/Documents/ITESM/Septimo Semestre/Dispositivos iOS/Proyecto Final/detail_map/CarteleraEventos/EventosFavoritos+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		641E53B22178270C0003A22D /* EventosFavoritos+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EventosFavoritos+CoreDataClass.swift"; path = "/Users/bandala/Documents/ITESM/Septimo Semestre/Dispositivos iOS/Proyecto Final/detail_map/CarteleraEventos/EventosFavoritos+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		641E53B521784A410003A22D /* MapaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		7A731367209229F9004B867D /* EventoFavoritoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventoFavoritoViewController.swift; sourceTree = "<group>"; };
 		7A73136920A25597004B867D /* ViewControllerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInfo.swift; sourceTree = "<group>"; };
@@ -399,7 +399,7 @@
 				A2ED5319219B5C88004E9064 /* EventsByDate.swift in Sources */,
 				7A73136A20A25597004B867D /* ViewControllerInfo.swift in Sources */,
 				A24F7F26219952ED00268A81 /* MultipleFilterViewController.swift in Sources */,
-				641E53B32178270C0003A22D /* EventosFavoritos+CoreDataClass.swift in Sources */,
+				641E53B32178270C0003A22D /* EventosFavoritos+CoreDataProperties.swift in Sources */,
 				A2009A8F2183DEF700DCD5B8 /* API.swift in Sources */,
 				5564A80F205DC7F3005480E7 /* APIManager.swift in Sources */,
 			);
@@ -552,7 +552,10 @@
 				);
 				INFOPLIST_FILE = CarteleraEventos/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosECMAMapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -578,7 +581,10 @@
 				);
 				INFOPLIST_FILE = CarteleraEventos/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = CarteleraEventosECMAMapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

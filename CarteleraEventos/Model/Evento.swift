@@ -6,11 +6,10 @@
 //  Refactorization by Karla Robledo Bandala on 13/10/18.
 //  Copyright © 2018 ESCAMA. All rights reserved.
 //
-
 /*
  Class: Evento
  Description: Modelo Evento que servirá para obtener los campos de información necesarios de
-              un objeto tipo evento
+ un objeto tipo evento
  */
 import UIKit
 
@@ -42,6 +41,8 @@ class Evento
     var cancelMessage: String?
     var campus: String?
     var registrationMessage: String?
+    var latitude : Double?
+    var longitude : Double?
     
     init( ide: String, fotoURL: String? = "", name: String? = "", startDate: String? = "",
           location: String? = "", contactEmail: String? = "", description: String? = "",
@@ -50,7 +51,7 @@ class Evento
           cost: String? = "", hasRegistration: String? = "", cancelled: String? = "",
           hasDeadline: String? = "", prefix: String? = "", registrationDeadline: String? = "",
           registrationUrl: String? = "", cancelMessage: String? = "",campus: String? = "",
-          registrationMessage: String? = "")
+          registrationMessage: String? = "", latitude: Double? = 0.0, longitude: Double? = 0.0)
     {
         self.id = Int(ide)!
         self.name = name!
@@ -103,6 +104,9 @@ class Evento
         self.cancelMessage = cancelMessage ?? nil
         self.campus = campus ?? nil
         self.registrationMessage = registrationMessage ?? nil
+        self.latitude = latitude ?? nil
+        self.longitude = longitude ?? nil
+        
         
     }
     
@@ -115,4 +119,3 @@ func makeDate(year: Int, month: Int, day: Int, hr: Int, min: Int, sec: Int) -> D
     let components = DateComponents(year: year, month: month, day: day, hour: hr, minute: min, second: sec)
     return calendar.date(from: components)!
 }
-
