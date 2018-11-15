@@ -6,11 +6,10 @@
 //  Refactorization by Karla Robledo Bandala on 13/10/18.
 //  Copyright © 2018 ESCAMA. All rights reserved.
 //
-
 /*
  Class: Evento
  Description: Modelo Evento que servirá para obtener los campos de información necesarios de
-              un objeto tipo evento
+ un objeto tipo evento
  */
 import UIKit
 
@@ -120,4 +119,3 @@ func makeDate(year: Int, month: Int, day: Int, hr: Int, min: Int, sec: Int) -> D
     let components = DateComponents(year: year, month: month, day: day, hour: hr, minute: min, second: sec)
     return calendar.date(from: components)!
 }
-

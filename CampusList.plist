@@ -3,7 +3,15 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>Nombre</key>
+		<key>nombre</key>
+		<string>CCM</string>
+		<key>latitud</key>
+		<string></string>
+		<key>longitud</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>nombre</key>
 		<string>MTY</string>
 		<key>Latitud</key>
 		<real>25.65112</real>

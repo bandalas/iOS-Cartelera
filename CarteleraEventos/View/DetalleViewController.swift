@@ -80,6 +80,7 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
     
     //MapKit vars
     @IBOutlet weak var iMapView: MKMapView!
+    
     let locationsManager = CLLocationManager()
     
     private let service = GTLRCalendarService()
