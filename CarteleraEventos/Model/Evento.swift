@@ -42,6 +42,8 @@ class Evento
     var cancelMessage: String?
     var campus: String?
     var registrationMessage: String?
+    var latitude : Double?
+    var longitude : Double?
     
     init( ide: String, fotoURL: String? = "", name: String? = "", startDate: String? = "",
           location: String? = "", contactEmail: String? = "", description: String? = "",
@@ -50,7 +52,7 @@ class Evento
           cost: String? = "", hasRegistration: String? = "", cancelled: String? = "",
           hasDeadline: String? = "", prefix: String? = "", registrationDeadline: String? = "",
           registrationUrl: String? = "", cancelMessage: String? = "",campus: String? = "",
-          registrationMessage: String? = "")
+          registrationMessage: String? = "", latitude: Double? = 0.0, longitude: Double? = 0.0)
     {
         self.id = Int(ide)!
         self.name = name!
@@ -103,6 +105,9 @@ class Evento
         self.cancelMessage = cancelMessage ?? nil
         self.campus = campus ?? nil
         self.registrationMessage = registrationMessage ?? nil
+        self.latitude = latitude ?? nil
+        self.longitude = longitude ?? nil
+        
         
     }
     

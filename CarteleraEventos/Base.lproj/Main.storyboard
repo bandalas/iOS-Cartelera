@@ -296,7 +296,7 @@
         <!--Detalle View Controller-->
         <scene sceneID="Ht0-dU-ptC">
             <objects>
-                <viewController storyboardIdentifier="detalle" id="1pW-dP-Nic" customClass="DetalleViewController" customModule="CarteleraEventos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Detalle" id="1pW-dP-Nic" customClass="DetalleViewController" customModule="CarteleraEventos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="38z-4C-yVC"/>
                         <viewControllerLayoutGuide type="bottom" id="oOS-dW-rTw"/>
@@ -626,7 +626,7 @@
         <!--Menu Principal View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" customClass="MenuPrincipalViewController" customModule="CarteleraEventos" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Tabs" id="49e-Tb-3d3" customClass="MenuPrincipalViewController" customModule="CarteleraEventos" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

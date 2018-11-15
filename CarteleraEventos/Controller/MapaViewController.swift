@@ -103,11 +103,9 @@ class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl){
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let detailView = sb.instantiateViewController(withIdentifier: "detalle") as! DetalleViewController
-        detailView.eveTemp = arrEventos[index]
-        print("tapped!!!")
-        self.navigationController?.pushViewController(detailView, animated: true)
-        
+        let detailView = sb.instantiateViewController(withIdentifier: "Detalle") as! DetalleViewController
+        detailView.eveTemp = arrEventos[0]
+        present(detailView,animated: true,completion: nil)
     }
     
     
@@ -119,6 +117,15 @@ class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         self.iMapView.removeAnnotations(annotations)
         
         for i in 0...arrEventos.count-1 {
+            
+            let annotation = MKPointAnnotation()
+            annotation.title = self.arrEventos[i].name
+            annotation.subtitle = self.arrEventos[i].campus
+            annotation.coordinate = CLLocationCoordinate2DMake(self.arrEventos[i].latitude!, self.arrEventos[i].longitude!)
+            iMapView.addAnnotation(annotation)
+            iMapView.delegate = self
+            
+            /*
             let searchRequest = MKLocalSearchRequest()
             searchRequest.region.center = iMapView.region.center
             searchRequest.naturalLanguageQuery = arrEventos[i].location
@@ -141,7 +148,7 @@ class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                     self.iMapView.addAnnotation(annotation)
                     self.index=i
                 }
-            }
+            }*/
         }
     }
     /*

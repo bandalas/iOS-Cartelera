@@ -353,6 +353,17 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         let annotations = self.iMapView.annotations
         self.iMapView.removeAnnotations(annotations)
         
+        let annotation = MKPointAnnotation()
+        annotation.title = self.eveName
+        annotation.subtitle = self.eveTemp.campus
+        annotation.coordinate = CLLocationCoordinate2DMake(eveTemp.latitude!, eveTemp.longitude!)
+        iMapView.addAnnotation(annotation)
+        let region = MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.iMapView.setRegion(region, animated: true)
+        
+        
+        
+        /*
         //begin search
         let searchRequest = MKLocalSearchRequest()
         searchRequest.naturalLanguageQuery = eveTemp.location
@@ -375,7 +386,7 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
                 let region = MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
                 self.iMapView.setRegion(region, animated: true)
             }
-        }
+        }*/
     }
     
 }
