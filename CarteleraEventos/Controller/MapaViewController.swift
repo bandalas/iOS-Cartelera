@@ -103,7 +103,11 @@ class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl){
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let detailView = sb.instantiateViewController(withIdentifier: "Detalle") as! DetalleViewController
-        detailView.eveTemp = arrEventos[0]
+        for i in 0...arrEventos.count-1{
+            if view.annotation?.title == arrEventos[i].name{
+                detailView.eveTemp = arrEventos[i]
+            }
+        }
         present(detailView,animated: true,completion: nil)
     }
     
