@@ -48,9 +48,32 @@ extension UIView {
 
 class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate, CLLocationManagerDelegate {
     
+    
     var eveTemp : Evento!
     var eveName : String!
     var delegado : protocoloModificarFavorito!
+    
+    /*
+    @IBOutlet weak var foto: UIImageView!
+    @IBOutlet weak var lbName: UILabel!
+    @IBOutlet weak var lbCategory: UILabel!
+    @IBOutlet weak var lbLugar: UILabel!
+    @IBOutlet weak var lbFecha: UILabel!
+    @IBOutlet weak var lbHora: UILabel!
+    @IBOutlet weak var btFav: UIButton!
+    @IBOutlet weak var lbContactName: UILabel!
+    @IBOutlet weak var lbContactEmail: UILabel!
+    @IBOutlet weak var lbContactPhone: UILabel!
+    @IBOutlet weak var card: UIView!
+    @IBOutlet weak var titlesView: UIView!
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var btCalendarioView: UIView!
+    @IBOutlet weak var lbDescription: UITextView!
+    @IBOutlet weak var imgPetFriendly: UIImageView!
+    @IBOutlet weak var lbPetFriendly: UILabel!
+    @IBOutlet weak var lbCalendario: UIButton!*/
+    
     @IBOutlet weak var foto: UIImageView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbLugar: UILabel!
@@ -75,12 +98,13 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
     @IBOutlet weak var lbPetFriendly: UILabel!
     
     @IBOutlet weak var lbCalendario: UIButton!
+    
     private let scopes = [kGTLRAuthScopeCalendar]
     
     
     //MapKit vars
     @IBOutlet weak var iMapView: MKMapView!
-    let locationsManager = CLLocationManager()
+    
     
     private let service = GTLRCalendarService()
     let signInButton = GIDSignInButton()
@@ -90,6 +114,7 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         scrollView.contentSize = mainView.frame.size
+        self.navigationController?.navigationBar.isHidden = true
         
         foto.image = eveTemp.foto
         lbName.text = eveTemp.name
@@ -356,8 +381,8 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         let annotation = MKPointAnnotation()
         annotation.title = self.eveName
         annotation.subtitle = self.eveTemp.campus
-        annotation.coordinate = CLLocationCoordinate2DMake(eveTemp.latitude!, eveTemp.longitude!)
-        iMapView.addAnnotation(annotation)
+        annotation.coordinate = CLLocationCoordinate2DMake(self.eveTemp.latitude!, self.eveTemp.longitude!)
+        self.iMapView.addAnnotation(annotation)
         let region = MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.iMapView.setRegion(region, animated: true)
         
@@ -388,6 +413,10 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
             }
         }*/
     }
+    @IBAction func `return`(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
 }
     

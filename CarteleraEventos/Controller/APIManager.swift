@@ -124,7 +124,9 @@ class APIManager
                                                 registrationUrl: eve["registrationUrl"] as? String,
                                                 cancelMessage: eve["cancelMessage"] as? String,
                                                 campus: eve["campus"] as? String,
-                                                registrationMessage: eve["registrationMessage"] as? String)
+                                                registrationMessage: eve["registrationMessage"] as? String,
+                                                latitude: eve["latitude"] as? Double,
+                                                longitude: eve["longitude"] as? Double)
                         
                         filteredEvents.append(eventoTemp)
                     }

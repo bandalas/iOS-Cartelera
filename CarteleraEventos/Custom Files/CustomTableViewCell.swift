@@ -8,10 +8,18 @@
 
 import UIKit
 
+/**
+ 
+ @Class: CustomTableViewCell
+ @Description:
+    Class that extends from UITableViewCell to customize a tableview cell.
+    Used for displaying the needed data for each event
+ 
+ */
+
 class CustomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var foto: UIImageView!
-    
     @IBOutlet weak var startDate: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var startTime: UILabel!

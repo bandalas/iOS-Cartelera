@@ -1,35 +1,30 @@
 //
-//  CategoriesCollectionViewController.swift
+//  MoreFilterSearchViewController.swift
 //  CarteleraEventos
 //
-//  Created by Karla Robledo Bandala on 11/3/18.
+//  Created by Karla Robledo Bandala on 11/12/18.
 //  Copyright © 2018 ESCAMA. All rights reserved.
 //
 
 import UIKit
 
 private let reuseIdentifier = "category_cell"
-
-struct GlobalFiltersList
-{
-    static var campusList = [String]()
-    static var categoryList:Set<String> = []
-}
-
-class FilterSearchCollectionViewController: UICollectionViewController {
+class MoreFilterSearchViewController: UICollectionViewController {
     
-    var arrCategories = [String]()
-    var arrCampus = [String]()
-    let arrDates = Filter.DATE_FILTER_ARRAY
+    var appliedCategoriesFilters:Set<String> = []
+    var appliedCampusFilters:Set<String> = []
+    var appliedDateFilter: String?
     
-    var arrDictionary: NSArray!
+    private var filterTypes = [Filter.FILTER_TYPE_ONE,Filter.FILTER_TYPE_TWO, Filter.FILTER_TYPE_THREE]
     
-    var filterTypes = [Filter.FILTER_TYPE_ONE,Filter.FILTER_TYPE_TWO, Filter.FILTER_TYPE_THREE]
-    
+    fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     fileprivate let itemsPerRow: CGFloat = 2
-    let headerIdentifier : String = "sectionHeader"
     
-    var completeEventCategories:Set<String> = []
+    private var arrCampus = [String]()
+    private var completeEventCategories:Set<String> = []
+    private var arrDates = Filter.DATE_FILTER_ARRAY
+    
+    private let headerIdentifier : String = "sectionHeader"
     
     
     override func viewDidLoad() {
@@ -38,20 +33,8 @@ class FilterSearchCollectionViewController: UICollectionViewController {
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
-        self.arrCategories = GlobalVar.arrCategoriesGlobal
-        fillCategoriesEventMap()
-        GlobalFiltersList.categoryList = self.completeEventCategories
-        
-        if let path = Bundle.main.path(forResource: "CampusList", ofType: "plist")
-        {
-            arrDictionary = NSArray(contentsOfFile: path)
-            fillCampusArray()
-            GlobalFiltersList.campusList = self.arrCampus
-        }
-        else{
-            print("Missing CampusList file")
-        }
-        
+        self.arrCampus = GlobalFiltersList.campusList
+        self.completeEventCategories = GlobalFiltersList.categoryList
         
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
             let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
@@ -60,68 +43,43 @@ class FilterSearchCollectionViewController: UICollectionViewController {
         }
     }
     
-    func fillCategoriesEventMap()
-    {
-        let apiCategories:Set<String> = Set(arrCategories)
-        let API = APIManager.sharedInstance
-        let registeredCategories:Set<String> = Set(API.getRegisteredEventsCategories())
-        self.completeEventCategories = apiCategories.union(registeredCategories)
-    }
     
-    func fillCampusArray()
-    {
-        for element in arrDictionary
-        {
-            let object = element as! NSDictionary
-            for(key,_) in object
-            {
-                if key as! String == "nombre"
-                {
-                    let campusName = object.value(forKey: key as! String)
-                    self.arrCampus.append(campusName as! String)
-                }
-            }
-        }
-    }
-    
-    // MARK: - Navigation
-
-    @IBAction func unwindFilters(for segue: UIStoryboardSegue, sender: Any?){
-        
-    }
-    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if (segue.identifier == "category")
+        if (segue.identifier == "more")
         {
-            let searchView = segue.destination as! SingleFilterViewController
+            let searchView = segue.destination as! MultipleFilterViewController
             let indexPath = sender as! NSIndexPath
             if indexPath.section == 0
             {
-                let categoryFilter = Array(completeEventCategories)[indexPath.row]
-                searchView.categoryFilters = categoryFilter
+                searchView.newCategoryFilter = Array(completeEventCategories)[indexPath.row]
+                searchView.categoryFilters = self.appliedCategoriesFilters
+                searchView.campusFilters = self.appliedCampusFilters
+                searchView.dateFilter = self.appliedDateFilter
             }
             else if indexPath.section == 1
             {
-                let campusFilter = arrCampus[indexPath.row]
-                searchView.campusFilters = campusFilter
+                searchView.newCampusFilter = arrCampus[indexPath.row]
+                searchView.campusFilters = self.appliedCampusFilters
+                searchView.categoryFilters = self.appliedCategoriesFilters
+                searchView.dateFilter = self.appliedDateFilter
             }
             else if indexPath.section == 2
             {
-                let dateFilter = arrDates[indexPath.row]
-                searchView.dateFilter = dateFilter
+                searchView.campusFilters = self.appliedCampusFilters
+                searchView.categoryFilters = self.appliedCategoriesFilters
+                searchView.dateFilter = arrDates[indexPath.row]
             }
         }
     }
-
-    // MARK: - UICollection Protocol Functions
     
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return filterTypes.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return completeEventCategories.count
@@ -129,12 +87,13 @@ class FilterSearchCollectionViewController: UICollectionViewController {
         if section == 1 {
             return arrCampus.count
         }
-        if section == 2 {
+        if appliedDateFilter == nil && section == 2
+        {
             return arrDates.count
         }
         return 0
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
         if indexPath.section == 0
@@ -147,38 +106,36 @@ class FilterSearchCollectionViewController: UICollectionViewController {
             let campusName = arrCampus[indexPath.row]
             cell.lblTitle.text = campusName
         }
-        else if indexPath.section == 2
+        else if indexPath.section == 2 && appliedDateFilter == nil
         {
             let dateFilter = arrDates[indexPath.row]
             cell.lblTitle.text = dateFilter
         }
         return cell
     }
-
+    
     // MARK: UICollectionViewDelegate
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "category", sender: indexPath)
+        self.performSegue(withIdentifier: "more", sender: indexPath)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
     {
         let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! SectionHeaderCollectionReusableView
-        
         if indexPath.section == 0 {
             sectionHeader.sectionLbl.text = "CATEGORIAS"
         }
         else if indexPath.section == 1 {
             sectionHeader.sectionLbl.text = "CAMPUS"
         }
-        else if indexPath.section == 2
-        {
+        else if indexPath.section == 2 && appliedDateFilter == nil {
             sectionHeader.sectionLbl.text = "FECHA"
+        }
+        else if indexPath.section == 2 && appliedDateFilter != nil {
+            sectionHeader.sectionLbl.text = ""
         }
         return sectionHeader;
     }
     
-    // MARK: - Loading Screen
-    
-
 }

@@ -1,0 +1,108 @@
+
+/* Class = "UILabel"; text = "Hora:"; ObjectID = "4qW-ov-xhN"; */
+"4qW-ov-xhN.text" = "Hora:";
+
+/* Class = "UILabel"; text = "¡PET FRIENDLY!"; ObjectID = "555-XU-ltD"; */
+"555-XU-ltD.text" = "¡PET FRIENDLY!";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "5E6-rm-xio"; */
+"5E6-rm-xio.text" = "name";
+
+/* Class = "UILabel"; text = "Nombre"; ObjectID = "7o3-Nx-52R"; */
+"7o3-Nx-52R.text" = "Nombre";
+
+/* Class = "UILabel"; text = "starDate"; ObjectID = "86N-0w-OY7"; */
+"86N-0w-OY7.text" = "starDate";
+
+/* Class = "UILabel"; text = "Lugar:"; ObjectID = "90k-c2-hRM"; */
+"90k-c2-hRM.text" = "Lugar:";
+
+/* Class = "UILabel"; text = "starDate"; ObjectID = "9Oh-FD-bez"; */
+"9Oh-FD-bez.text" = "starDate";
+
+/* Class = "UILabel"; text = "Desarrolladores:"; ObjectID = "FLd-3H-YDX"; */
+"FLd-3H-YDX.text" = "Desarrolladores:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Fdz-0H-Xfh"; */
+"Fdz-0H-Xfh.text" = "Label";
+
+/* Class = "UILabel"; text = "Fecha:"; ObjectID = "HY6-T6-hgs"; */
+"HY6-T6-hgs.text" = "Fecha:";
+
+/* Class = "UILabel"; text = "- Carlos David López Ruiz"; ObjectID = "M2c-O7-kFg"; */
+"M2c-O7-kFg.text" = "- Carlos David López Ruiz";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PC5-mu-6xt"; */
+"PC5-mu-6xt.text" = "Label";
+
+/* Class = "UILabel"; text = "startTime"; ObjectID = "Q55-8Y-g4Z"; */
+"Q55-8Y-g4Z.text" = "startTime";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "Ucy-Ie-Xit"; */
+"Ucy-Ie-Xit.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "EventosTec ha sido desarrollado por estudiantes del Tecnológico de Monterrey durante el semestre Enero Mayo de 2018, como parte del curso Desarrollo de Aplicaciones para Dispositivos Móviles y asesorados por la maestra Yolanda Martínez Treviño"; ObjectID = "Y69-ip-qIw"; */
+"Y69-ip-qIw.text" = "EventosTec ha sido desarrollado por estudiantes del Tecnológico de Monterrey durante el semestre Enero Mayo de 2018, como parte del curso Desarrollo de Aplicaciones para Dispositivos Móviles y asesorados por la maestra Yolanda Martínez Treviño";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Z4D-Qs-A6X"; */
+"Z4D-Qs-A6X.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Información"; ObjectID = "ZZg-x3-Oa9"; */
+"ZZg-x3-Oa9.title" = "Información";
+
+/* Class = "UILabel"; text = "startTime"; ObjectID = "a2u-cc-1hD"; */
+"a2u-cc-1hD.text" = "startTime";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "aF7-6U-tYc"; */
+"aF7-6U-tYc.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Eventos"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Eventos";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bbF-TO-6fL"; */
+"bbF-TO-6fL.text" = "Label";
+
+/* Class = "UILabel"; text = "* Íconos obtenidos de icons8.com"; ObjectID = "biu-x6-rnL"; */
+"biu-x6-rnL.text" = "* Íconos obtenidos de icons8.com";
+
+/* Class = "UILabel"; text = "EventosTec se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro."; ObjectID = "cFK-0S-9Dh"; */
+"cFK-0S-9Dh.text" = "EventosTec se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro.";
+
+/* Class = "UITabBarItem"; title = "Mapa"; ObjectID = "cRW-KB-De8"; */
+"cRW-KB-De8.title" = "Mapa";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "cXB-L2-LRQ"; */
+"cXB-L2-LRQ.text" = "name";
+
+/* Class = "UILabel"; text = "starDate"; ObjectID = "ebU-mO-xZj"; */
+"ebU-mO-xZj.text" = "starDate";
+
+/* Class = "UIButton"; normalTitle = "Agregar a calendario"; ObjectID = "gaV-IO-xPw"; */
+"gaV-IO-xPw.normalTitle" = "Agregar a calendario";
+
+/* Class = "UITabBarItem"; title = "Favoritos"; ObjectID = "gdh-SZ-Pxd"; */
+"gdh-SZ-Pxd.title" = "Favoritos";
+
+/* Class = "UILabel"; text = "startTime"; ObjectID = "m6c-wn-0kG"; */
+"m6c-wn-0kG.text" = "startTime";
+
+/* Class = "UIBarButtonItem"; title = "< Eventos"; ObjectID = "nHB-6S-bFk"; */
+"nHB-6S-bFk.title" = "< Eventos";
+
+/* Class = "UILabel"; text = "- Ana Marcela Villarreal Martínez"; ObjectID = "ncq-xf-PL1"; */
+"ncq-xf-PL1.text" = "- Ana Marcela Villarreal Martínez";
+
+/* Class = "UILabel"; text = "- Esteban Arocha Ortuño"; ObjectID = "ngY-ZG-qrH"; */
+"ngY-ZG-qrH.text" = "- Esteban Arocha Ortuño";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "pwg-wa-gTi"; */
+"pwg-wa-gTi.text" = "name";
+
+/* Class = "UITabBarItem"; title = "Trending"; ObjectID = "r0W-FO-Cpq"; */
+"r0W-FO-Cpq.title" = "Trending";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sDV-yQ-Nqb"; */
+"sDV-yQ-Nqb.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "z4c-rY-Iod"; */
+"z4c-rY-Iod.normalTitle" = "Button";
