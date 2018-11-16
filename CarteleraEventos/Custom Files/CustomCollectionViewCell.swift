@@ -26,10 +26,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         //This is where the color of the padding is set
-        lblTitle.layer.backgroundColor = UIColor.red.cgColor
+        lblTitle.layer.backgroundColor = UIColor.init(red: 30/255, green: 136/255, blue: 229/255, alpha: 1.0).cgColor
         lblTitle.textColor = UIColor.white
-        lblTitle.layer.cornerRadius = 20
-        lblTitle.font = UIFont.boldSystemFont(ofSize: 13)
+        lblTitle.layer.cornerRadius = 8
+        lblTitle.font = UIFont.boldSystemFont(ofSize: 15)
     }
     
 }

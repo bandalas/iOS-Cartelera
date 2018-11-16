@@ -20,8 +20,8 @@ protocol protocoloModificarFavorito{
 // Todas las funciones y atributos de UX
 extension UIView {
     func createGradientLayer() {
-        let colorTop =  UIColor.red.cgColor
-        let colorBottom = UIColor(red: 142.0/255.0, green: 14.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
+        let colorTop =  UIColor.init(red: 254/255, green: 91/255, blue: 30/255, alpha: 1.0).cgColor
+        let colorBottom = UIColor.init(red: 255/255, green: 143/255, blue: 0/255, alpha: 1.0).cgColor
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bounds
@@ -148,11 +148,11 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
         // Show favorite button according to favorite status
         if (eveTemp.favorites)
         {
-            btFav.setImage(#imageLiteral(resourceName: "star-red-fill"), for: .normal)
+            btFav.setImage(#imageLiteral(resourceName: "star-blue-fill"), for: .normal)
         }
         else
         {
-            btFav.setImage(#imageLiteral(resourceName: "star-red-outline"), for: .normal)
+            btFav.setImage(#imageLiteral(resourceName: "star-blue-outline"), for: .normal)
         }
 
         lbName.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -203,17 +203,17 @@ class DetalleViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
     //MARK: - Modifica evento favorito
     
     @IBAction func modificaFavButton(_ sender: Any) {
-        if (eveTemp.favorites)
+        if (self.eveTemp.favorites)
         {
-            delegado.modificaFavorito(fav: false, ide: eveTemp.id)
-            eveTemp.favorites = false
-            btFav.setImage(#imageLiteral(resourceName: "star-red-outline"), for: .normal)
+            self.delegado.modificaFavorito(fav: false, ide: self.eveTemp.id)
+            self.eveTemp.favorites = false
+            btFav.setImage(#imageLiteral(resourceName: "star-blue-outline"), for: .normal)
         }
         else
         {
-            delegado.modificaFavorito(fav: true, ide: eveTemp.id)
-            eveTemp.favorites = true
-            btFav.setImage(#imageLiteral(resourceName: "star-red-fill"), for: .normal)
+            self.delegado.modificaFavorito(fav: true, ide: self.eveTemp.id)
+            self.eveTemp.favorites = true
+            btFav.setImage(#imageLiteral(resourceName: "star-blue-fill"), for: .normal)
         }        
     }
     

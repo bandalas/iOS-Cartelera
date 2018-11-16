@@ -117,6 +117,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         {
             //Guardarlo
             let favEv = EventosFavoritos(context: managedContext)
+            managedContext
             favEv.setValue(ide, forKey: "ident")
         }
         else if (resultados.count > 0 && !fav)
