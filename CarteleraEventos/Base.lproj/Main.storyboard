@@ -955,7 +955,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLS-3j-g7e" customClass="PaddingLabel" customModule="CarteleraEventos" customModuleProvider="target">
-                                            <rect key="frame" x="54.666666666666657" y="21" width="42" height="21"/>
+                                            <rect key="frame" x="18" y="21" width="115" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="115" id="Spl-oC-ZMl"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -976,15 +979,17 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fug-j3-nc1">
-                                    <rect key="frame" x="8" y="18.666666666666668" width="42" height="21.000000000000004"/>
+                                    <rect key="frame" x="8" y="28" width="398" height="22"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="Fug-j3-nc1" firstAttribute="leading" secondItem="SGh-wI-iSA" secondAttribute="leading" constant="8" id="bVy-UR-aI6"/>
-                                <constraint firstItem="Fug-j3-nc1" firstAttribute="centerY" secondItem="SGh-wI-iSA" secondAttribute="centerY" id="nlr-WN-BVI"/>
+                                <constraint firstItem="Fug-j3-nc1" firstAttribute="top" secondItem="SGh-wI-iSA" secondAttribute="topMargin" id="C0o-X9-vKJ"/>
+                                <constraint firstItem="Fug-j3-nc1" firstAttribute="leading" secondItem="SGh-wI-iSA" secondAttribute="leadingMargin" id="Jp0-gn-tRq"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="Fug-j3-nc1" secondAttribute="bottom" id="RnA-g5-pPX"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="Fug-j3-nc1" secondAttribute="trailing" id="b7D-Ig-1kx"/>
                             </constraints>
                             <connections>
                                 <outlet property="sectionLbl" destination="Fug-j3-nc1" id="XOl-cb-Ghu"/>
