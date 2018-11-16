@@ -17,11 +17,15 @@ class EventsByDate: NSObject {
     
     public func getTodaysEvents() -> [Evento]
     {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         var todayEvents = [Evento]()
-        let today = Date()
+        let today = dateFormatter.string(from: Date())
         for event in allEvents
         {
-            if event.startDate == today
+            print(event.startDate)
+            print(today)
+            if dateFormatter.string(from: event.startDate) == today
             {
                 todayEvents.append(event)
             }
