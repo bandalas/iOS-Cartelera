@@ -8,9 +8,10 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 
-class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, protocoloModificarFavorito {
     
     var arrEventos = [Evento]()
     var index = 0
@@ -106,6 +107,8 @@ class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         for i in 0...arrEventos.count-1{
             if view.annotation?.title == arrEventos[i].name{
                 detailView.eveTemp = arrEventos[i]
+                detailView.eveName = arrEventos[i].name
+                detailView.delegado = self
             }
         }
         present(detailView,animated: true,completion: nil)
@@ -127,6 +130,43 @@ class MapaViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             annotation.coordinate = CLLocationCoordinate2DMake(self.arrEventos[i].latitude!, self.arrEventos[i].longitude!)
             iMapView.addAnnotation(annotation)
             iMapView.delegate = self
+        }
+    }
+    
+    // Funcion que se encarga de agregar o eliminar los favoritos de la base de datos
+    func modificaFavorito(fav: Bool, ide: Int) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<EventosFavoritos>(entityName: "EvenFavoritos")
+        
+        let predicado = NSPredicate(format: "(ident = %@)", String(ide))
+        fetchRequest.predicate = predicado
+        
+        var resultados : [EventosFavoritos]!
+        
+        do {
+            resultados = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print ("Error al leer \(error) \(error.userInfo)")
+        }
+        
+        if (resultados.count == 0 && fav)
+        {
+            //Guardarlo
+            let favEv = EventosFavoritos(context: managedContext)
+            managedContext
+            favEv.setValue(ide, forKey: "ident")
+        }
+        else if (resultados.count > 0 && !fav)
+        {
+            //Quitarlo
+            managedContext.delete(resultados[0])
+        }
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Error \(error) \(error.userInfo)")
         }
     }
 }

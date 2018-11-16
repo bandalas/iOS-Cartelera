@@ -26,7 +26,7 @@ class FilterSearchCollectionViewController: UICollectionViewController {
     
     var filterTypes = [Filter.FILTER_TYPE_ONE,Filter.FILTER_TYPE_TWO, Filter.FILTER_TYPE_THREE]
     
-    fileprivate let itemsPerRow: CGFloat = 2
+    fileprivate let itemsPerRow: CGFloat = 1
     let headerIdentifier : String = "sectionHeader"
     
     var completeEventCategories:Set<String> = []
@@ -54,7 +54,7 @@ class FilterSearchCollectionViewController: UICollectionViewController {
         
         
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
-            let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
+            let horizontalSpacing = CGFloat(integerLiteral: 1)
             let cellWidth = (view.frame.width - max(0, itemsPerRow - 1)*horizontalSpacing)/itemsPerRow
             flowLayout.itemSize = CGSize(width: cellWidth, height: 50)
         }

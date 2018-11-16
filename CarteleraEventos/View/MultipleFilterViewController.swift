@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 /**
  
@@ -20,7 +21,38 @@ class MultipleFilterViewController: UIViewController, UITableViewDelegate, UITab
 {
     
     func modificaFavorito(fav: Bool, ide: Int) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<EventosFavoritos>(entityName: "EvenFavoritos")
         
+        let predicado = NSPredicate(format: "(ident = %@)", String(ide))
+        fetchRequest.predicate = predicado
+        
+        var resultados : [EventosFavoritos]!
+        
+        do {
+            resultados = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print ("Error al leer \(error) \(error.userInfo)")
+        }
+        
+        if (resultados.count == 0 && fav)
+        {
+            //Guardarlo
+            let favEv = EventosFavoritos(context: managedContext)
+            managedContext
+            favEv.setValue(ide, forKey: "ident")
+        }
+        else if (resultados.count > 0 && !fav)
+        {
+            //Quitarlo
+            managedContext.delete(resultados[0])
+        }
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Error \(error) \(error.userInfo)")
+        }
     }
     
     @IBOutlet weak var filteredTable: UITableView!
